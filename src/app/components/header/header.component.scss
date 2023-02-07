@@ -1,0 +1,9 @@
+@import "src/assets/styles/colors";
+
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: $main-light-grey;
+  gap: 15px;
+}
