@@ -7,3 +7,30 @@
   background: $main-light-grey;
   gap: 20px;
 }
+
+.filter-title {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  color: #929292;
+}
+
+.sorting-button {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  text-decoration-line: underline;
+  color: $main-blue !important;
+}
+
+.word-sorting-block {
+  text-decoration-line: none;
+}
+
+.word-sorting-block label{
+  margin-right: 10px;
+}
+
+#word-sorting {
+  border: none;
+}

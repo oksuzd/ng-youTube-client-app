@@ -15,8 +15,6 @@ import { SearchInputComponent } from './components/header/components/search-inpu
 import { SettingsButtonComponent } from './components/header/components/settings-button/settings-button.component';
 import { LoginComponent } from './components/header/components/login/login.component';
 import { FilterComponent } from './components/filter/filter.component';
-import { FilterButtonComponent } from './components/filter/components/filter-button/filter-button.component';
-import { FilterInputComponent } from './components/filter/components/filter-input/filter-input.component';
 
 @NgModule({
   declarations: [
@@ -29,8 +27,6 @@ import { FilterInputComponent } from './components/filter/components/filter-inpu
     SettingsButtonComponent,
     LoginComponent,
     FilterComponent,
-    FilterButtonComponent,
-    FilterInputComponent
   ],
   imports: [
     BrowserModule,
