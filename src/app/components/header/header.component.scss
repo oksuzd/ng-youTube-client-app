@@ -2,8 +2,25 @@
 
 :host {
   display: flex;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   background: $main-light-grey;
-  gap: 15px;
+  gap: 10px;
+
+  &__left {
+    width: 15%;
+  }
+
+  &__center {
+    width: 70%;
+  }
+
+  &__right {
+    width: 15%;
+  }
 }
