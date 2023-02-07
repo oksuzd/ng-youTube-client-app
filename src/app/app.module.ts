@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatProgressBarModule } from "@angular/material/progress-bar";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +17,7 @@ import { SearchInputComponent } from './components/header/components/search-inpu
 import { SettingsButtonComponent } from './components/header/components/settings-button/settings-button.component';
 import { LoginComponent } from './components/header/components/login/login.component';
 import { FilterComponent } from './components/filter/filter.component';
+
 
 @NgModule({
   declarations: [
@@ -33,7 +36,9 @@ import { FilterComponent } from './components/filter/filter.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    MatCardModule,
+    MatProgressBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
