@@ -1,32 +1,32 @@
 <mat-card class="search-result-card">
   <mat-card-header>
-    <img mat-card-image class="search-card-img" src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+    <img mat-card-image class="search-card-img" [src]="item.imgUrl"
          alt="Photo of a Shiba Inu">
   </mat-card-header>
   <mat-card-actions class="search-card-feedback">
     <div>
       <img src="assets/img/viewed-icon.svg" alt="viewed-icon">
-      <span>1000</span>
+      <span>{{item.views}}</span>
     </div>
     <div>
       <img src="assets/img/liked-icon.svg" alt="liked-icon">
-      <span>680</span>
+      <span>{{item.likes}}</span>
     </div>
     <div>
       <img src="assets/img/disliked-icon.svg" alt="disliked-icon">
-      <span>320</span>
+      <span>{{item.dislikes}}</span>
     </div>
     <div>
       <img src="assets/img/comments-icon.svg" alt="comments-icon">
-      <span>250</span>
+      <span>{{item.comments}}</span>
     </div>
   </mat-card-actions>
   <mat-card-content class="search-card-content">
-    <mat-card-title class="search-card-title">Shiba Inu</mat-card-title>
+    <mat-card-title class="search-card-title">{{item.title}}</mat-card-title>
   </mat-card-content>
   <mat-card-footer class="search-card-footer">
     <button class="search-card-more-button" mat-raised-button>more...</button>
-    <mat-progress-bar mode="determinate" class="search-card-bar"></mat-progress-bar>
+    <mat-progress-bar mode="determinate" class="search-card-bar" [style.background-color]="item.dataBar"></mat-progress-bar>
   </mat-card-footer>
 </mat-card>
 

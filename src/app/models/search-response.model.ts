@@ -2,7 +2,7 @@ export interface Response {
   kind: string,
   etag: string,
   pageInfo: PageInfo,
-  items: Items[]
+  items: Item[]
 }
 
 interface PageInfo {
@@ -10,7 +10,7 @@ interface PageInfo {
   resultsPerPage: number
 }
 
-interface Items {
+interface Item {
   kind: string,
   etag: string,
   id: string,
