@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SearchService } from "../../../../services/search.service";
 
 @Component({
   selector: 'app-search-input',
@@ -6,5 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./search-input.component.scss']
 })
 export class SearchInputComponent {
-  click(){}
+
+  inputValue: string = '';
+
+  constructor(private searchService: SearchService) {
+  }
+
+  search(): void {
+    this.searchService.setInputValue(this.inputValue);
+  }
 }

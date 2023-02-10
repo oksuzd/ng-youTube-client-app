@@ -17,6 +17,7 @@ import { SearchInputComponent } from './components/header/components/search-inpu
 import { SettingsButtonComponent } from './components/header/components/settings-button/settings-button.component';
 import { LoginComponent } from './components/header/components/login/login.component';
 import { FilterComponent } from './components/filter/filter.component';
+import { FormsModule } from "@angular/forms";
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { FilterComponent } from './components/filter/filter.component';
     MatButtonModule,
     MatCardModule,
     MatProgressBarModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
