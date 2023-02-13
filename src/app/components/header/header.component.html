@@ -3,7 +3,7 @@
   <div class="header header__center">
     <app-logo></app-logo>
     <app-search-input (onSearch)="onSearchHeader($event)"></app-search-input>
-    <app-settings-button></app-settings-button>
+    <app-settings-button (onShow)="onShowHeader($event)"></app-settings-button>
   </div>
   <div class="header header__right">
     <app-login></app-login>

@@ -1,5 +1,6 @@
-<app-header (onSearch)="onSearch($event)"></app-header>
-<app-filter></app-filter>
+<app-header (onSearch)="onSearch($event)"
+            (onShow)="onShow($event)"></app-header>
+<app-filter *ngIf="isShown"></app-filter>
 <div class="main-content">
   <app-search-results [message]="message"></app-search-results>
 </div>
