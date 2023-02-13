@@ -1,5 +1,5 @@
-<app-header></app-header>
+<app-header (onSearch)="onSearch($event)"></app-header>
 <app-filter></app-filter>
 <div class="main-content">
-  <app-search-results></app-search-results>
+  <app-search-results [message]="message"></app-search-results>
 </div>

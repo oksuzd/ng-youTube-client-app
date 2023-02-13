@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { SearchService } from "../../../../services/search.service";
 
 @Component({
@@ -8,12 +8,15 @@ import { SearchService } from "../../../../services/search.service";
 })
 export class SearchInputComponent {
 
+  @Output() onSearch: EventEmitter<string> = new EventEmitter();
+
   inputValue: string = '';
 
   constructor(private searchService: SearchService) {
   }
 
   search(): void {
-    this.searchService.setInputValue(this.inputValue);
+    // this.searchService.setInputValue(this.inputValue);
+    this.onSearch.emit(this.inputValue);
   }
 }

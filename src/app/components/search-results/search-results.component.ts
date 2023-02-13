@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Item } from "../../models/search-item.model";
 import { SearchResultDataService } from "./search-result.services/search-result-data.service";
 import { SearchService } from "../../services/search.service";
@@ -9,26 +9,49 @@ import { SearchService } from "../../services/search.service";
   templateUrl: './search-results.component.html',
   styleUrls: ['./search-results.component.scss']
 })
-export class SearchResultsComponent implements OnInit {
+export class SearchResultsComponent implements OnChanges {
   // items: Item[] = [];
-  texts: string[] = ['456', 'zxc'];
+
+  @Input() message: string = '';
+
+  texts: string[] = [];
   inputText: string = '';
 
   constructor(private dataService: SearchResultDataService,
               private searchInput: SearchService) {
   }
 
-  ngOnInit(): void {
-    // this.getItems();
-    this.getText();
+  ngOnChanges(changes: SimpleChanges) {
+    console.log(changes);
+
+    const change = changes['message'];
+
+    if(change && !change.firstChange){
+      console.log('2', changes);
+      this.updateText(change.currentValue);
+    }
   }
+
+  // ngOnInit(): void {
+  //   // this.getItems();
+  //   // this.getText();
+  // }
 
   getText(): void {
     this.inputText = this.searchInput.getInputValue();
   }
 
-  updateText() {
-    this.texts.push(this.searchInput.getInputValue());
+  updateText(message: string) {
+    //this.texts.push(this.searchInput.getInputValue());
+    // this.texts.push(this.message);
+    this.texts.push(this.filter(message));
+  }
+
+  filter(text: string): string {
+    if (text.includes('1')) {
+      return text;
+    }
+    return 'no results';
   }
 
   // getItems(): void {
