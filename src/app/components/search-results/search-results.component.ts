@@ -1,8 +1,6 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Item } from "../../models/search-item.model";
 import { SearchResultDataService } from "./search-result.services/search-result-data.service";
-import { SearchService } from "../../services/search.service";
-
 
 @Component({
   selector: 'app-search-results',
@@ -10,62 +8,42 @@ import { SearchService } from "../../services/search.service";
   styleUrls: ['./search-results.component.scss']
 })
 export class SearchResultsComponent implements OnChanges {
-  // items: Item[] = [];
 
   @Input() message: string = '';
 
-  texts: string[] = [];
-  inputText: string = '';
+  items: Item[] = [];
+  isFirstChange: boolean = true;
 
-  constructor(private dataService: SearchResultDataService,
-              private searchInput: SearchService) {
+  constructor(private dataService: SearchResultDataService) {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log(changes);
+    this.items = [];
+    const changeMessage = changes['message'];
 
-    const change = changes['message'];
+    if (!changeMessage.firstChange) {
+      this.isFirstChange = false;
+    }
 
-    if(change && !change.firstChange){
-      console.log('2', changes);
-      this.updateText(change.currentValue);
+    if (this.message && !changeMessage.firstChange) {
+      this.getItems(changeMessage.currentValue);
     }
   }
 
-  // ngOnInit(): void {
-  //   // this.getItems();
-  //   // this.getText();
-  // }
+  getItems(message: string): void {
 
-  getText(): void {
-    this.inputText = this.searchInput.getInputValue();
+    const getConfiguredText = (text: string) => text.toLowerCase().trim();
+
+    this.items = this.dataService.getData().items.map(item => {
+      return {
+        title: item.snippet.title,
+        imgUrl: item.snippet.thumbnails.medium.url,
+        comments: +item.statistics.commentCount,
+        dislikes: +item.statistics.dislikeCount,
+        likes: +item.statistics.likeCount,
+        views: +item.statistics.viewCount,
+      }
+    });
+    this.items = this.items.filter(item => getConfiguredText(item.title).includes(getConfiguredText(message)))
   }
-
-  updateText(message: string) {
-    //this.texts.push(this.searchInput.getInputValue());
-    // this.texts.push(this.message);
-    this.texts.push(this.filter(message));
-  }
-
-  filter(text: string): string {
-    if (text.includes('1')) {
-      return text;
-    }
-    return 'no results';
-  }
-
-  // getItems(): void {
-  //
-  //   this.items = this.dataService.getData().items.map(item => {
-  //     return {
-  //       title: item.snippet.title,
-  //       imgUrl: item.snippet.thumbnails.medium.url,
-  //       comments: +item.statistics.commentCount,
-  //       dislikes: +item.statistics.dislikeCount,
-  //       likes: +item.statistics.likeCount,
-  //       views: +item.statistics.viewCount,
-  //     }
-  //   });
-  // }
-
 }

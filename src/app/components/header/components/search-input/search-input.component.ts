@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { SearchService } from "../../../../services/search.service";
 
 @Component({
   selector: 'app-search-input',
@@ -12,11 +11,7 @@ export class SearchInputComponent {
 
   inputValue: string = '';
 
-  constructor(private searchService: SearchService) {
-  }
-
   search(): void {
-    // this.searchService.setInputValue(this.inputValue);
     this.onSearch.emit(this.inputValue);
   }
 }
