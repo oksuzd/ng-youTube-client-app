@@ -18,6 +18,8 @@ import { SettingsButtonComponent } from './components/header/components/settings
 import { LoginComponent } from './components/header/components/login/login.component';
 import { FilterComponent } from './components/filter/filter.component';
 import { FormsModule } from "@angular/forms";
+import { FooterBarColorDirective } from './directives/footer-bar-color.directive';
+
 
 
 @NgModule({
@@ -31,6 +33,7 @@ import { FormsModule } from "@angular/forms";
     SettingsButtonComponent,
     LoginComponent,
     FilterComponent,
+    FooterBarColorDirective,
   ],
   imports: [
     BrowserModule,
@@ -41,6 +44,7 @@ import { FormsModule } from "@angular/forms";
     MatCardModule,
     MatProgressBarModule,
     FormsModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

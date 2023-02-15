@@ -31,10 +31,6 @@
   color: #4F4F4F;
 }
 
-//.search-card-footer {
-//  align-items: center !important;
-//}
-
 .search-card-more-button {
   display: block;
   margin-left: auto;
@@ -47,6 +43,7 @@
 }
 
 .search-card-bar {
-  background-color: $main-blue;
+  //background-color: $main-blue;
+  height: 7px;
   border-radius:0 0 5px 5px;
 }
