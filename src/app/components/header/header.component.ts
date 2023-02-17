@@ -18,6 +18,4 @@ export class HeaderComponent {
     this.onShow.emit(event);
   }
 
-
-
 }

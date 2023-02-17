@@ -1,2 +1,4 @@
 <div *ngIf="!items.length && !isFirstChange">no results</div>
-<app-search-item *ngFor="let item of items" [item]="item"></app-search-item>
+<!--<app-search-item *ngFor="let item of items" [item]="item"></app-search-item>-->
+
+<app-search-item *ngFor="let item of items | filterByPopular: isPopularStatus" [item]="item"></app-search-item>

@@ -11,24 +11,25 @@ import moment from 'moment';
 export class SearchResultsComponent implements OnChanges {
 
   @Input() message: string = '';
+  @Input() isPopularStatus: boolean = false;
 
   items: Item[] = [];
   isFirstChange: boolean = true;
-
 
   constructor(private dataService: SearchResultDataService) {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    this.items = [];
     const changeMessage = changes['message'];
 
-    if (!changeMessage.firstChange) {
-      this.isFirstChange = false;
-    }
-
-    if (this.message && !changeMessage.firstChange) {
-      this.getItems(changeMessage.currentValue);
+    if (changeMessage) {
+      this.items = [];
+      if (!changeMessage.firstChange) {
+        this.isFirstChange = !changeMessage.firstChange;
+      }
+      if (this.message && !changeMessage.firstChange) {
+        this.getItems(changeMessage.currentValue);
+      }
     }
   }
 

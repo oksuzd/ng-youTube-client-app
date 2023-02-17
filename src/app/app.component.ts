@@ -7,9 +7,11 @@ import { Component} from '@angular/core';
 })
 export class AppComponent {
 
-  message: string = '';
   title = 'ng-youTube-client-app';
+
+  message: string = '';
   isShown: boolean = false;
+  isPopularStatus = false;
 
   onSearch(event: string): void {
     this.message = event;
@@ -19,4 +21,9 @@ export class AppComponent {
     this.isShown = event;
   }
 
+  onPopular(event: boolean): void {
+
+    console.log('App onPopular', event)
+    this.isPopularStatus = event;
+  }
 }

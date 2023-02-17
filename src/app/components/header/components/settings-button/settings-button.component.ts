@@ -12,11 +12,8 @@ export class SettingsButtonComponent {
   isFilterShown: boolean = false;
 
   show(): void {
-    // this.onShow.emit(!this.isFilterShown);
-    console.log(!this.isFilterShown);
     this.isFilterShown = !this.isFilterShown;
     this.onShow.emit(this.isFilterShown);
-
   }
 
 }

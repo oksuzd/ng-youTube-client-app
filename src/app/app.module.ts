@@ -5,6 +5,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressBarModule } from "@angular/material/progress-bar";
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,7 +20,7 @@ import { LoginComponent } from './components/header/components/login/login.compo
 import { FilterComponent } from './components/filter/filter.component';
 import { FormsModule } from "@angular/forms";
 import { FooterBarColorDirective } from './directives/footer-bar-color.directive';
-
+import { FilterByPopularPipe } from './pipes/filter-by-popular.pipe';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { FooterBarColorDirective } from './directives/footer-bar-color.directive
     LoginComponent,
     FilterComponent,
     FooterBarColorDirective,
+    FilterByPopularPipe,
   ],
   imports: [
     BrowserModule,
@@ -44,6 +46,7 @@ import { FooterBarColorDirective } from './directives/footer-bar-color.directive
     MatCardModule,
     MatProgressBarModule,
     FormsModule,
+    MatCheckboxModule,
 
   ],
   providers: [],
