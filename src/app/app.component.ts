@@ -1,4 +1,5 @@
 import { Component} from '@angular/core';
+import { Criteria } from "./models/filters.model";
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,8 @@ export class AppComponent {
 
   message: string = '';
   isShown: boolean = false;
-  isPopularStatus = false;
+  // isPopularStatus: boolean = false;
+  selectedCriteria!: Criteria;
 
   onSearch(event: string): void {
     this.message = event;
@@ -21,9 +23,11 @@ export class AppComponent {
     this.isShown = event;
   }
 
-  onPopular(event: boolean): void {
+  // onPopular(event: boolean): void {
+  //   this.isPopularStatus = event;
+  // }
 
-    console.log('App onPopular', event)
-    this.isPopularStatus = event;
+  onCriteria(event: Criteria): void {
+    this.selectedCriteria = event;
   }
 }

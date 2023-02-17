@@ -2,6 +2,7 @@ import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { BarColor, Item } from "../../models/search-item.model";
 import { SearchResultDataService } from "./search-result.services/search-result-data.service";
 import moment from 'moment';
+import { Criteria } from "../../models/filters.model";
 
 @Component({
   selector: 'app-search-results',
@@ -12,6 +13,7 @@ export class SearchResultsComponent implements OnChanges {
 
   @Input() message: string = '';
   @Input() isPopularStatus: boolean = false;
+  @Input() criteria!: Criteria;
 
   items: Item[] = [];
   isFirstChange: boolean = true;
@@ -21,6 +23,8 @@ export class SearchResultsComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     const changeMessage = changes['message'];
+    const criteria = changes['criteria'];
+    console.log(criteria)
 
     if (changeMessage) {
       this.items = [];

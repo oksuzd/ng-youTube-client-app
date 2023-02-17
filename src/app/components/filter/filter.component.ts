@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { MatCheckboxChange } from "@angular/material/checkbox";
-
+import { Criteria } from "../../models/filters.model";
 
 @Component({
   selector: 'app-filter',
@@ -11,26 +11,29 @@ export class FilterComponent {
 
   checkboxColor = {color: 'primary'};
   popular: boolean = false;
-
-  @Output() onPopular: EventEmitter<boolean> = new EventEmitter();
-
-  public toggle(event: MatCheckboxChange){
-    this.onPopular.emit(event.checked);
+  criteria: Criteria = {
+    name: 'popular',
+    status: false
   }
 
+  //filtersConf: FilterConf
 
+  @Output() onCriteria: EventEmitter<Criteria> = new EventEmitter();
 
+  // @Output() onPopular: EventEmitter<boolean> = new EventEmitter();
 
-
-  // onPopularFilter(event: boolean): void {
-  //   this.onPopular.emit(event);
+  // private setCriteria() {
+  //   this.criteria.status = this.popular;
   // }
-  // isPopularStatus: boolean = false;
-  // onPopularFilter(event: boolean): void {
-  //   this.onPopular.emit(event);
+
+  public toggle(event: MatCheckboxChange) {
+    // this.onCriteria.emit(event.checked);
+    // this.setCriteria();
+    this.onCriteria.emit({...this.criteria, status:event.checked});
+  }
+
+  // public toggle(event: MatCheckboxChange) {
+  //   this.onPopular.emit(event.checked);
   // }
-  // public status = '';
-
-
 
 }

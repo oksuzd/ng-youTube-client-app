@@ -21,6 +21,7 @@ import { FilterComponent } from './components/filter/filter.component';
 import { FormsModule } from "@angular/forms";
 import { FooterBarColorDirective } from './directives/footer-bar-color.directive';
 import { FilterByPopularPipe } from './pipes/filter-by-popular.pipe';
+import { FilterByCriteriaPipe } from './pipes/filter-by-criteria.pipe';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { FilterByPopularPipe } from './pipes/filter-by-popular.pipe';
     FilterComponent,
     FooterBarColorDirective,
     FilterByPopularPipe,
+    FilterByCriteriaPipe,
   ],
   imports: [
     BrowserModule,

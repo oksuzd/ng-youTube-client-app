@@ -2,12 +2,21 @@
 <button mat-button class="sorting-button">date</button>
 <button mat-button class="sorting-button">count of views</button>
 <button mat-button class="sorting-button">alphabet</button>
+
 <mat-checkbox class="example-margin"
               [color]="checkboxColor.color"
               [(ngModel)]="popular"
               (change)="toggle($event)">
   popular
 </mat-checkbox>
+
+
+<!--<mat-checkbox class="example-margin"-->
+<!--              [color]="checkboxColor.color"-->
+<!--              [(ngModel)]="criteria"-->
+<!--              (change)="toggle($event)">-->
+<!--  popular-->
+<!--</mat-checkbox>-->
 
 
 <!--<mat-checkbox class="example-margin" [(ngModel)]="checked" [color]="checkboxColor.color" class="filter-checkbox">popular</mat-checkbox>-->
