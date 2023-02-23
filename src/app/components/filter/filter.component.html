@@ -1,7 +1,7 @@
 <div class="filter-title">Sorting by:</div>
-<button mat-button class="sorting-button">date</button>
-<button mat-button class="sorting-button">count of views</button>
-<button mat-button class="sorting-button">alphabet</button>
+<button mat-button class="sorting-button" (click)="onDate()">date</button>
+<button mat-button class="sorting-button" (click)="onViews()">count of views</button>
+<button mat-button class="sorting-button" (click)="onAlphabet()">alphabet</button>
 
 <mat-checkbox class="example-margin"
               [color]="checkboxColor.color"
@@ -9,25 +9,6 @@
               (change)="toggle($event)">
   popular
 </mat-checkbox>
-
-
-<!--<mat-checkbox class="example-margin"-->
-<!--              [color]="checkboxColor.color"-->
-<!--              [(ngModel)]="criteria"-->
-<!--              (change)="toggle($event)">-->
-<!--  popular-->
-<!--</mat-checkbox>-->
-
-
-<!--<mat-checkbox class="example-margin" [(ngModel)]="checked" [color]="checkboxColor.color" class="filter-checkbox">popular</mat-checkbox>-->
-<!--<mat-checkbox class="example-margin" [(ngModel)]="checked" >I'm a checkbox</mat-checkbox>-->
-
-
-
-<!--<section class="example-section">-->
-<!--  <mat-checkbox class="example-margin" [(ngModel)]="checked">I'm a checkbox</mat-checkbox>-->
-<!--</section>-->
-
 
 <!--<div class="sorting-button word-sorting-block">-->
 <!--  <label for="word-sorting">by word or sentence</label>-->

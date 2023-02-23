@@ -7,6 +7,7 @@ export interface Item {
   isDisliked?: boolean,
   comments: number,
   title: string,
+  publishedAt?: string,
   dataBar: BarColor
 }
 

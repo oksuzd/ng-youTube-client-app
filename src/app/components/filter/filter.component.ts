@@ -11,29 +11,33 @@ export class FilterComponent {
 
   checkboxColor = {color: 'primary'};
   popular: boolean = false;
+  isDate: boolean = false;
+  isViews: boolean = false;
+  isAlphabet: boolean = false;
   criteria: Criteria = {
-    name: 'popular',
+    name: '',
     status: false
   }
 
-  //filtersConf: FilterConf
-
   @Output() onCriteria: EventEmitter<Criteria> = new EventEmitter();
 
-  // @Output() onPopular: EventEmitter<boolean> = new EventEmitter();
-
-  // private setCriteria() {
-  //   this.criteria.status = this.popular;
-  // }
-
   public toggle(event: MatCheckboxChange) {
-    // this.onCriteria.emit(event.checked);
-    // this.setCriteria();
-    this.onCriteria.emit({...this.criteria, status:event.checked});
+    // this.onCriteria.emit({...this.criteria, status:event.checked});
+    this.onCriteria.emit({name: 'popular', status: event.checked});
   }
 
-  // public toggle(event: MatCheckboxChange) {
-  //   this.onPopular.emit(event.checked);
-  // }
+  public onDate(): void {
+    this.isDate = !this.isDate;
+    this.onCriteria.emit({name: 'date', status: this.isDate});
+  }
 
+  public onViews(): void {
+    this.isViews = !this.isViews;
+    this.onCriteria.emit({name: 'views', status: this.isViews});
+  }
+
+  public onAlphabet(): void {
+    this.isAlphabet = !this.isAlphabet;
+    this.onCriteria.emit({name: 'alphabet', status: this.isAlphabet});
+  }
 }

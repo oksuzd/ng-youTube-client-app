@@ -20,7 +20,6 @@ import { LoginComponent } from './components/header/components/login/login.compo
 import { FilterComponent } from './components/filter/filter.component';
 import { FormsModule } from "@angular/forms";
 import { FooterBarColorDirective } from './directives/footer-bar-color.directive';
-import { FilterByPopularPipe } from './pipes/filter-by-popular.pipe';
 import { FilterByCriteriaPipe } from './pipes/filter-by-criteria.pipe';
 
 
@@ -36,7 +35,6 @@ import { FilterByCriteriaPipe } from './pipes/filter-by-criteria.pipe';
     LoginComponent,
     FilterComponent,
     FooterBarColorDirective,
-    FilterByPopularPipe,
     FilterByCriteriaPipe,
   ],
   imports: [

@@ -23,13 +23,11 @@ export class SearchResultsComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     const changeMessage = changes['message'];
-    const criteria = changes['criteria'];
-    console.log(criteria)
 
     if (changeMessage) {
       this.items = [];
       if (!changeMessage.firstChange) {
-        this.isFirstChange = !changeMessage.firstChange;
+        this.isFirstChange = changeMessage.firstChange;
       }
       if (this.message && !changeMessage.firstChange) {
         this.getItems(changeMessage.currentValue);
@@ -49,6 +47,7 @@ export class SearchResultsComponent implements OnChanges {
         dislikes: +item.statistics.dislikeCount,
         likes: +item.statistics.likeCount,
         views: +item.statistics.viewCount,
+        publishedAt: item.snippet.publishedAt,
         dataBar: this.getDataBarColor(item.snippet.publishedAt),
       }
     });

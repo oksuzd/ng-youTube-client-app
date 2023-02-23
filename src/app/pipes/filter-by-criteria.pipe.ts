@@ -1,6 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { Item } from "../models/search-item.model";
 import { Criteria } from "../models/filters.model";
+import moment from "moment";
 
 
 @Pipe({
@@ -8,21 +9,47 @@ import { Criteria } from "../models/filters.model";
 })
 export class FilterByCriteriaPipe implements PipeTransform {
 
-  setCriteriaByPopular(array: Item[], status: boolean): Item[] {
-    if (!status) {
-      return array;
-    }
-    return array.filter((item) => item.likes >= 1000);
+  transform(allItems: Item[], criteria: Criteria): Item[] {
 
+    switch (criteria?.name) {
+      case 'popular':
+        return this.setCriteriaByPopular(allItems, criteria.status);
+      case 'date':
+        return this.setCriteriaByDate(allItems, criteria.status);
+      case 'views':
+        return this.setCriteriaByViews(allItems, criteria.status);
+      case 'alphabet':
+        return this.setCriteriaByAlphabet(allItems, criteria.status);
+      default:
+        return allItems;
+    }
   }
 
-
-  transform(allItems: Item[], criteria: Criteria): Item[] {
-    if (!criteria?.name) {
+  private setCriteriaByPopular(allItems: Item[], status: boolean): Item[] {
+    if (!status) {
       return allItems;
     }
+    return allItems.filter((item) => item.likes >= 1000);
+  }
 
-    return this.setCriteriaByPopular(allItems, criteria.status);
+  private setCriteriaByDate(allItems: Item[], status: boolean): Item[] {
+    if (!status) {
+      return allItems.sort((a, b) => moment(a.publishedAt).diff(moment(b.publishedAt)));
+    }
+    return allItems.sort((a, b) => moment(b.publishedAt).diff(moment(a.publishedAt)));
+  }
 
+  private setCriteriaByViews(allItems: Item[], status: boolean): Item[] {
+    if (!status) {
+      return allItems.sort((a, b) => a.views - b.views);
+    }
+    return allItems.sort((a, b) => b.views - a.views);
+  }
+
+  private setCriteriaByAlphabet(allItems: Item[], status: boolean): Item[] {
+    if (!status) {
+      return allItems.sort((a, b) => b.title.localeCompare(a.title));
+    }
+    return allItems.sort((a, b) => a.title.localeCompare(b.title));
   }
 }
