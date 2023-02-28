@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import "assets/styles/colors";
 
-html {
+html, body {
   height: 100%;
 }
 
@@ -12,11 +12,3 @@ body {
   margin: 0;
 }
 
-.main-content {
-  margin: auto;
-  width: 1000px;
-}
-
-label {
-  color: $main-blue;
-}

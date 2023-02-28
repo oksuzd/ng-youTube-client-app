@@ -1,0 +1,20 @@
+@import "../assets/styles/colors";
+
+
+:host {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.main {
+  width: 1000px;
+  max-width: 1000px;
+  height: 100%;
+  margin: auto;
+}
+
+label {
+  color: $main-blue;
+}

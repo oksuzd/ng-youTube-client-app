@@ -1,0 +1,10 @@
+@import "../../../../assets/styles/colors";
+
+:host {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding: 20px;
+  flex-wrap: wrap;
+  gap: 10px;
+}

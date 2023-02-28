@@ -1,9 +1,7 @@
 <app-header (onSearch)="onSearch($event)"
             (onShow)="onShow($event)"></app-header>
-<!--<app-filter *ngIf="isShown" (onPopular)="onPopular($event)"></app-filter>-->
 <app-filter *ngIf="isShown" (onCriteria)="onCriteria($event)"></app-filter>
-<div class="main-content">
+<div class="main">
   <app-search-results [message]="message" [criteria]="selectedCriteria"></app-search-results>
-<!--  <app-search-results [message]="message" [isPopularStatus] = "isPopularStatus"></app-search-results>-->
-
 </div>
+<app-footer></app-footer>
