@@ -2,17 +2,31 @@
 
 
 :host {
-  display: flex;
+  //border: 2px solid blue;
   height: 100%;
+  margin: auto;
+  display: flex;
   flex-direction: column;
-  justify-content: space-between;
+
 }
 
 .main {
-  width: 1000px;
-  max-width: 1000px;
-  height: 100%;
-  margin: auto;
+  //border: 2px solid turquoise;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+::ng-deep {
+  .container {
+    //border: 2px solid yellow;
+    width: 800px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 label {

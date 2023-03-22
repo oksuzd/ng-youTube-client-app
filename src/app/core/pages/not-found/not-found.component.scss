@@ -1,14 +1,9 @@
 :host {
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
+  margin: auto;
 }
 
 .not-found-icon {
-  //width: 56px;
-  //height: fit-content;
+  margin-right: 15px;
 }
 
 .not-found-message {
@@ -17,5 +12,4 @@
   font-size: 24px;
   line-height: 28px;
   color: #828282;
-
 }

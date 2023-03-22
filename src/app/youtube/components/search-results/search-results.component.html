@@ -1,2 +1,4 @@
-<div *ngIf="!this.items.length && !this.isFirstChange">no results</div>
-<app-search-item *ngFor="let item of items | filterByCriteria: criteria" [item]="item"></app-search-item>
+<div class="container search-result-container">
+  <div *ngIf="!this.items.length && !this.isFirstChange">no results</div>
+  <app-search-item *ngFor="let item of items | filterByCriteria: criteria" [item]="item"></app-search-item>
+</div>
