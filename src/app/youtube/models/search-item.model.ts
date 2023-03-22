@@ -1,4 +1,5 @@
 export interface Item {
+  id: string,
   imgUrl: string,
   views: number,
   likes: number,

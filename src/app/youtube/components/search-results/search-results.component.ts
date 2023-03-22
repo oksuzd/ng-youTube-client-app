@@ -40,6 +40,7 @@ export class SearchResultsComponent implements OnChanges {
 
     this.items = this.dataService.getData().items.map(item => {
       return {
+        id: item.id,
         title: item.snippet.title,
         imgUrl: item.snippet.thumbnails.medium.url,
         comments: +item.statistics.commentCount,

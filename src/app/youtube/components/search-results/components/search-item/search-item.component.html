@@ -25,7 +25,7 @@
     <mat-card-title class="search-card-title">{{item.title}}</mat-card-title>
   </mat-card-content>
   <mat-card-footer class="search-card-footer">
-    <button class="search-card-more-button" mat-raised-button>more...</button>
+    <button class="search-card-more-button" (click)="openDetails()" mat-raised-button>more...</button>
     <mat-progress-bar appFooterBarColor [barColor]="item.dataBar" mode="determinate" class="search-card-bar"></mat-progress-bar>
   </mat-card-footer>
 </mat-card>

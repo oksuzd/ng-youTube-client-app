@@ -9,6 +9,7 @@ import { SharedModule } from "@shared/shared.module";
 import { FooterComponent } from './components/footer/footer.component';
 import { MainPageComponent } from './pages/main-page/main-page.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { RouterLink } from "@angular/router";
 
 
 
@@ -23,10 +24,11 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
     MainPageComponent,
     NotFoundComponent,
   ],
-  imports: [
-    CommonModule,
-    SharedModule,
-  ],
+    imports: [
+        CommonModule,
+        SharedModule,
+        RouterLink,
+    ],
     exports: [
         HeaderComponent,
         LoginComponent,

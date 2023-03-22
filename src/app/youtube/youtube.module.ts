@@ -6,6 +6,7 @@ import { SearchItemComponent } from "@youtube/components/search-results/componen
 import { FilterComponent } from "@youtube/components/filter/filter.component";
 import { FooterBarColorDirective } from "@youtube/directives/footer-bar-color.directive";
 import { FilterByCriteriaPipe } from "./pipes/filter-by-criteria.pipe";
+import { DetailsInfoComponent } from './pages/details-info/details-info.component';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { FilterByCriteriaPipe } from "./pipes/filter-by-criteria.pipe";
     FilterComponent,
     FooterBarColorDirective,
     FilterByCriteriaPipe,
+    DetailsInfoComponent,
   ],
   imports: [
     CommonModule,

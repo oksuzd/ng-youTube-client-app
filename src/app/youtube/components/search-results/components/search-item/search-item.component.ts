@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Item } from "@youtube/models";
+import { Router } from "@angular/router";
 
 
 @Component({
@@ -9,4 +10,11 @@ import { Item } from "@youtube/models";
 })
 export class SearchItemComponent {
   @Input() public item!: Item;
+
+  constructor(private router: Router) {
+  }
+
+  openDetails() {
+    this.router.navigate(['search-result', this.item.id]).then();
+  }
 }
