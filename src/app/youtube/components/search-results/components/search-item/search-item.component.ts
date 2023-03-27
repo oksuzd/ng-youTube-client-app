@@ -1,6 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Item } from "@youtube/models";
 import { Router } from "@angular/router";
+import { DataStoreService } from "@youtube/services/data-store.service";
 
 
 @Component({
@@ -8,13 +9,19 @@ import { Router } from "@angular/router";
   templateUrl: './search-item.component.html',
   styleUrls: ['./search-item.component.scss']
 })
-export class SearchItemComponent {
+export class SearchItemComponent implements OnInit {
   @Input() public item!: Item;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private stateService: DataStoreService) {
   }
 
-  openDetails() {
-    this.router.navigate(['search-result', this.item.id]).then();
+  ngOnInit() {
+    this.stateService.setDataItem(this.item);
+  }
+
+
+  openDetails(id: string) {
+    console.log(id);
+    this.router.navigate(['detail', id]).then();
   }
 }

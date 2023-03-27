@@ -1,0 +1,104 @@
+@import "../../../../assets/styles/colors";
+
+:host {
+  padding: 15px 0;
+  //border: 2px solid red;
+  margin: auto;
+  position: relative;
+
+  app-back-button{
+    position: absolute;
+    top: 14px;
+    left: -38px;
+  }
+}
+
+.detail-card {
+  //border: 2px solid blueviolet;
+  display: flex;
+  flex-direction: row;
+}
+
+.detail-card-info {
+  //border: 2px solid green;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  background: $main-light-grey;
+  border-radius: 5px;
+
+  mat-card-header {
+    flex: 0 0 50px;
+  }
+
+  mat-card-content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  mat-card-footer {
+    flex: 0 0 30px;
+  }
+}
+
+.detail-card-img {
+  max-width: 100%;
+  background-color: #C4C4C4;
+}
+
+.detail-card-title {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 18px;
+  color: #000000;
+}
+
+.detail-card-date {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  text-align: right;
+  color: $grey-text;
+}
+
+.detail-card-description-title {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  color: #000000;
+}
+
+.detail-card-description-text {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  color: $grey-text;
+}
+
+.detail-card-feedback {
+  display: flex;
+  gap: 10px;
+}
+
+.detail-card-feedback-group {
+  display: flex;
+  gap: 2px;
+}
+
+
+.detail-card-feedback-text {
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  color: #000000;
+}
+
+.search-card-bar {
+  height: 7px;
+  border-radius: 0 0 5px 5px;
+}

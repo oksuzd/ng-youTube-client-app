@@ -13,7 +13,7 @@ const routes: Routes = [
   {path: 'auth/login', component: LoginPageComponent},
   {path: 'youtube',
     loadChildren: () => import('./youtube/youtube.module').then(m => m.YoutubeModule)},
-  {path: 'search-result/:id', component: DetailsInfoComponent},
+  {path: 'detail/:id', component: DetailsInfoComponent},
   {path: '**', component: NotFoundComponent},
 ];
 

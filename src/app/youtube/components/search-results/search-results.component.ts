@@ -1,7 +1,6 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { BarColor, Criteria, Item } from "@youtube/models";
+import { Criteria, Item } from "@youtube/models";
 import { SearchResultDataService } from "@youtube/services";
-import moment from 'moment';
 
 @Component({
   selector: 'app-search-results',
@@ -35,41 +34,12 @@ export class SearchResultsComponent implements OnChanges {
   }
 
   getItems(message: string): void {
-
     const getConfiguredText = (text: string) => text.toLowerCase().trim();
-
-    this.items = this.dataService.getData().items.map(item => {
-      return {
-        id: item.id,
-        title: item.snippet.title,
-        imgUrl: item.snippet.thumbnails.medium.url,
-        comments: +item.statistics.commentCount,
-        dislikes: +item.statistics.dislikeCount,
-        likes: +item.statistics.likeCount,
-        views: +item.statistics.viewCount,
-        publishedAt: item.snippet.publishedAt,
-        dataBar: this.getDataBarColor(item.snippet.publishedAt),
-      }
-    });
-
+    this.items = this.dataService.getData();
     this.items = this.items.filter(item => getConfiguredText(item.title).includes(getConfiguredText(message)));
   }
 
-  private getDataBarColor(date: string): BarColor {
 
-    const daysAmount = moment(new Date()).diff(moment(date), 'days');
-    const monthAmount = moment(new Date()).diff(moment(date), 'months');
 
-    if (daysAmount <= 7 && monthAmount === 0) {
-      return BarColor.blue;
-    } else if (daysAmount > 7 && monthAmount === 0) {
-      return BarColor.green;
-    } else if (monthAmount >= 1 && monthAmount <= 6) {
-      return BarColor.yellow;
-    } else if (monthAmount > 6) {
-      return BarColor.red;
-    } else {
-      return BarColor.default;
-    }
-  }
+
 }

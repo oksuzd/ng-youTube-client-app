@@ -7,6 +7,7 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatCardModule } from "@angular/material/card";
 import { MatProgressBarModule } from "@angular/material/progress-bar";
 import { MatCheckboxModule } from "@angular/material/checkbox";
+import { BackButtonComponent } from './components/back-button/back-button.component';
 
 
 const materialModules = [
@@ -18,16 +19,19 @@ const materialModules = [
 ]
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    BackButtonComponent
+  ],
   imports: [
     CommonModule,
     ...materialModules,
     FormsModule,
   ],
-  exports: [
-    ...materialModules,
-    FormsModule,
-  ],
+    exports: [
+        ...materialModules,
+        FormsModule,
+        BackButtonComponent,
+    ],
 
 })
 export class SharedModule { }

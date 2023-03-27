@@ -4,7 +4,7 @@ import { Directive, ElementRef, Input, OnInit, Renderer2 } from '@angular/core';
   selector: '[appFooterBarColor]'
 })
 export class FooterBarColorDirective implements OnInit {
-  @Input() barColor: string = '';
+  @Input() barColor: string | undefined = '';
 
   constructor(private elementRef: ElementRef, private renderer2: Renderer2) {
   }
