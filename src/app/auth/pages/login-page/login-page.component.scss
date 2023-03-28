@@ -1,0 +1,31 @@
+//@import "../../../../assets/styles/colors";
+
+:host {
+  margin: 45px auto;
+}
+
+.login-card-title {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 21px;
+}
+
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-form-label {
+  font-size: 12px;
+}
+
+.login-form-button {
+  width: 100px;
+  height: 30px;
+  left: 112px;
+  background-color: #2F80ED;
+  color: #FFFFFF;
+  font-size: 14px;
+
+}

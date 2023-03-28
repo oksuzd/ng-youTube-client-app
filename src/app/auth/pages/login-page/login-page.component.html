@@ -1,1 +1,22 @@
-<p>login-page works!</p>
+<div class="container">
+  <mat-card class="login-card">
+    <mat-card-header>
+      <p class="login-card-title">Login</p>
+    </mat-card-header>
+    <mat-card-content>
+      <form class="login-form">
+        <mat-form-field appearance="fill" class="login-input">
+          <mat-label class="login-form-label">login</mat-label>
+          <input matInput>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label class="login-form-label">password</mat-label>
+          <input matInput type="password">
+        </mat-form-field>
+        <button class="login-form-button" matSuffix mat-raised-button (click)="logIn()">
+          Login
+        </button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
