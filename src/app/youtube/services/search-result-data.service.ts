@@ -4,9 +4,7 @@ import { RESPONSE_DATA } from "@youtube/services/mock-data";
 import moment from "moment/moment";
 
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class SearchResultDataService {
 
   constructor() {

@@ -8,6 +8,7 @@ import { MatCardModule } from "@angular/material/card";
 import { MatProgressBarModule } from "@angular/material/progress-bar";
 import { MatCheckboxModule } from "@angular/material/checkbox";
 import { BackButtonComponent } from './components/back-button/back-button.component';
+import { UserDataService } from "@shared/services/user-data.service";
 
 
 const materialModules = [
@@ -27,11 +28,12 @@ const materialModules = [
     ...materialModules,
     FormsModule,
   ],
-    exports: [
-        ...materialModules,
-        FormsModule,
-        BackButtonComponent,
-    ],
-
+  exports: [
+    ...materialModules,
+    FormsModule,
+    BackButtonComponent,
+  ],
+  providers: [UserDataService],
 })
-export class SharedModule { }
+export class SharedModule {
+}

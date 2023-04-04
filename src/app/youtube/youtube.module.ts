@@ -7,6 +7,8 @@ import { FilterComponent } from "@youtube/components/filter/filter.component";
 import { FooterBarColorDirective } from "@youtube/directives/footer-bar-color.directive";
 import { FilterByCriteriaPipe } from "./pipes/filter-by-criteria.pipe";
 import { DetailsInfoComponent } from './pages/details-info/details-info.component';
+import { DataStoreService } from "@youtube/services/data-store.service";
+import { SearchResultDataService } from "@youtube/services";
 
 
 @NgModule({
@@ -27,5 +29,9 @@ import { DetailsInfoComponent } from './pages/details-info/details-info.componen
     SearchItemComponent,
     FilterComponent,
   ],
+  providers: [
+    DataStoreService,
+    SearchResultDataService,
+  ]
 })
 export class YoutubeModule { }

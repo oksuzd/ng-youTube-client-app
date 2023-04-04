@@ -39,7 +39,4 @@ export class SearchResultsComponent implements OnChanges {
     this.items = this.items.filter(item => getConfiguredText(item.title).includes(getConfiguredText(message)));
   }
 
-
-
-
 }

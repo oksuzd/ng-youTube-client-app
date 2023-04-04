@@ -7,16 +7,23 @@
       <form class="login-form">
         <mat-form-field appearance="fill" class="login-input">
           <mat-label class="login-form-label">login</mat-label>
-          <input matInput>
+          <input matInput [(ngModel)]="loginValue" name="loginValue">
         </mat-form-field>
         <mat-form-field>
           <mat-label class="login-form-label">password</mat-label>
-          <input matInput type="password">
+          <input matInput type="password" [(ngModel)]="passwordValue" name="passwordValue">
         </mat-form-field>
-        <button class="login-form-button" matSuffix mat-raised-button (click)="logIn()">
-          Login
-        </button>
+        <div class="log-buttons-group">
+          <button class="login-form-button" matSuffix mat-raised-button (click)="logIn()">
+            LogIn
+          </button>
+          <button class="login-form-button" matSuffix mat-raised-button (click)="logOut()">
+            LogOut
+          </button>
+        </div>
       </form>
+      <!--      <button class="" matSuffix mat-raised-button (click)="saveUserData()">Save Data</button>-->
+      <!--      <button class="" matSuffix mat-raised-button (click)="loadUserData()">Load Data</button>-->
     </mat-card-content>
   </mat-card>
 </div>

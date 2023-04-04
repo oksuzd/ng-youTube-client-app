@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Item } from "@youtube/models";
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class DataStoreService {
 
   private data: Item | undefined;

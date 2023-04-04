@@ -6,7 +6,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { CoreModule } from "@core/core.module";
 import { YoutubeModule } from "@youtube/youtube.module";
-import { AuthModule } from "@auth/auth.module";
 
 
 @NgModule({
@@ -19,7 +18,6 @@ import { AuthModule } from "@auth/auth.module";
     BrowserAnimationsModule,
     CoreModule,
     YoutubeModule,
-    AuthModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
