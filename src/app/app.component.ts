@@ -1,5 +1,6 @@
-import { Component} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Criteria } from "@youtube/models";
+import { UserDataService } from "@shared/services/user-data.service";
 
 
 @Component({
@@ -7,13 +8,20 @@ import { Criteria } from "@youtube/models";
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   title = 'ng-youTube-client-app';
 
   message: string = '';
   isShown: boolean = false;
   selectedCriteria!: Criteria;
+
+  constructor(private userData:UserDataService) {
+  }
+
+  ngOnInit() {
+    this.userData.loadData()
+  }
 
   onSearch(event: string): void {
     this.message = event;

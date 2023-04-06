@@ -18,8 +18,8 @@ export class LoginPageComponent implements OnInit{
 
   ngOnInit() {
     let data = this.userData.loadData();
-    this.loginValue = data.login;
-    this.passwordValue = data.password;
+    this.loginValue = data?.login;
+    this.passwordValue = data?.password;
   }
 
   logIn() {
@@ -28,11 +28,11 @@ export class LoginPageComponent implements OnInit{
       password: this.passwordValue
     };
     this.userData.saveData(this.user);
+
   }
 
   logOut() {
     this.userData.deleteData();
-    this.user = this.loginValue = this.passwordValue =null;
+    this.user = this.loginValue = this.passwordValue = null;
   }
-
 }

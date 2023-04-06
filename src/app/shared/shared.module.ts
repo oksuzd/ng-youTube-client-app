@@ -8,7 +8,6 @@ import { MatCardModule } from "@angular/material/card";
 import { MatProgressBarModule } from "@angular/material/progress-bar";
 import { MatCheckboxModule } from "@angular/material/checkbox";
 import { BackButtonComponent } from './components/back-button/back-button.component';
-import { UserDataService } from "@shared/services/user-data.service";
 
 
 const materialModules = [
@@ -33,7 +32,6 @@ const materialModules = [
     FormsModule,
     BackButtonComponent,
   ],
-  providers: [UserDataService],
 })
 export class SharedModule {
 }
