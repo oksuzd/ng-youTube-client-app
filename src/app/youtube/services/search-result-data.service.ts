@@ -2,13 +2,19 @@ import { Injectable } from '@angular/core';
 import { BarColor, Item, Response } from "@youtube/models";
 import { RESPONSE_DATA } from "@youtube/services/mock-data";
 import moment from "moment/moment";
+import { BehaviorSubject, Observable } from "rxjs";
 
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class SearchResultDataService {
 
-  constructor() {
-  }
+  private _searchResultData$: BehaviorSubject<string> = new BehaviorSubject<string>('');
+  readonly searchResultData$: Observable<string> = this._searchResultData$.asObservable();
+
+  private _filterIsShown$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  readonly filterIsShown$: Observable<boolean> = this._filterIsShown$.asObservable();
+
+  constructor() {}
 
   getData(): Item[] {
     return this.mapData(RESPONSE_DATA);
@@ -53,4 +59,11 @@ export class SearchResultDataService {
     }
   }
 
+  setData(data: string) {
+    this._searchResultData$.next(data);
+  }
+
+  showFilter(flag: boolean) {
+    this._filterIsShown$.next(flag);
+  }
 }

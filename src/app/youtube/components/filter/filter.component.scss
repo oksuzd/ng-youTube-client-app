@@ -4,7 +4,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: $main-light-grey;
+  //background: $main-light-grey;
   gap: 20px;
 }
 
@@ -22,15 +22,3 @@
   text-decoration-line: underline;
   color: $main-blue !important;
 }
-
-//.word-sorting-block {
-//  text-decoration-line: none;
-//}
-
-//.word-sorting-block label{
-//  margin-right: 10px;
-//}
-
-//#word-sorting {
-//  border: none;
-//}

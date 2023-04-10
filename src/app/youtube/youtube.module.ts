@@ -1,37 +1,38 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from "@shared/shared.module";
-import { SearchResultsComponent } from "@youtube/components/search-results/search-results.component";
-import { SearchItemComponent } from "@youtube/components/search-results/components/search-item/search-item.component";
+import { SearchItemComponent } from "@youtube/components/search-item/search-item.component";
 import { FilterComponent } from "@youtube/components/filter/filter.component";
 import { FooterBarColorDirective } from "@youtube/directives/footer-bar-color.directive";
 import { FilterByCriteriaPipe } from "./pipes/filter-by-criteria.pipe";
 import { DetailsInfoComponent } from './pages/details-info/details-info.component';
-import { DataStoreService } from "@youtube/services/data-store.service";
-import { SearchResultDataService } from "@youtube/services";
+import { SearchResultPageComponent } from './pages/search-result-page/search-result-page.component';
+import { RouterModule, Routes } from "@angular/router";
 
+const routes: Routes = [
+  {path: '', redirectTo: 'search-result', pathMatch: 'full'},
+  {path: 'search-result', component: SearchResultPageComponent},
+  {path: 'detail/:id', component: DetailsInfoComponent}
+];
 
 @NgModule({
   declarations: [
-    SearchResultsComponent,
     SearchItemComponent,
     FilterComponent,
     FooterBarColorDirective,
     FilterByCriteriaPipe,
     DetailsInfoComponent,
+    SearchResultPageComponent,
   ],
   imports: [
     CommonModule,
     SharedModule,
+    RouterModule.forChild(routes),
   ],
   exports: [
-    SearchResultsComponent,
     SearchItemComponent,
     FilterComponent,
   ],
-  providers: [
-    DataStoreService,
-    SearchResultDataService,
-  ]
 })
-export class YoutubeModule { }
+export class YoutubeModule {
+}

@@ -1,8 +1,5 @@
-<app-header (onSearch)="onSearch($event)"
-            (onShow)="onShow($event)"></app-header>
-<app-filter *ngIf="isShown" (onCriteria)="onCriteria($event)"></app-filter>
+<app-header></app-header>
 <div class="main">
   <router-outlet></router-outlet>
-  <app-search-results [message]="message" [criteria]="selectedCriteria"></app-search-results>
 </div>
 <!--<app-footer></app-footer>-->

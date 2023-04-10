@@ -11,12 +11,12 @@ import { SearchResultDataService } from "@youtube/services";
 export class DetailsInfoComponent implements OnInit{
   item!: Item | undefined;
 
-  constructor(public route: ActivatedRoute, private dataService: SearchResultDataService) {
+  constructor(public route: ActivatedRoute,
+              private dataService: SearchResultDataService) {
   }
 
   ngOnInit() {
     const itemId = this.route.snapshot.params['id'];
     this.item = this.dataService.getItemById(itemId);
   }
-
 }

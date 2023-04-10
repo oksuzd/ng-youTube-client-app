@@ -12,16 +12,15 @@ import { DataStoreService } from "@youtube/services/data-store.service";
 export class SearchItemComponent implements OnInit {
   @Input() public item!: Item;
 
-  constructor(private router: Router, private stateService: DataStoreService) {
+  constructor(private router: Router,
+              private stateService: DataStoreService) {
   }
 
   ngOnInit() {
     this.stateService.setDataItem(this.item);
   }
 
-
   openDetails(id: string) {
-    console.log(id);
-    this.router.navigate(['detail', id]).then();
+    this.router.navigate(['youtube/detail', id]).then();
   }
 }

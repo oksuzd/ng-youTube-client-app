@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
+import { SearchResultDataService } from "@youtube/services";
 
 @Component({
   selector: 'app-search-input',
@@ -7,11 +8,12 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class SearchInputComponent {
 
-  @Output() onSearch: EventEmitter<string> = new EventEmitter();
-
   inputValue: string = '';
 
+  constructor(private searchResultService: SearchResultDataService) {
+  }
+
   search(): void {
-    this.onSearch.emit(this.inputValue);
+    this.searchResultService.setData(this.inputValue);
   }
 }

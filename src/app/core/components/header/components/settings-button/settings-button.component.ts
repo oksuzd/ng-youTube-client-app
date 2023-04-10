@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
+import { SearchResultDataService } from "@youtube/services";
 
 @Component({
   selector: 'app-settings-button',
@@ -7,13 +8,13 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class SettingsButtonComponent {
 
-  @Output() onShow: EventEmitter<boolean> = new EventEmitter();
-
   isFilterShown: boolean = false;
+
+  constructor(private filterService: SearchResultDataService) {
+  }
 
   show(): void {
     this.isFilterShown = !this.isFilterShown;
-    this.onShow.emit(this.isFilterShown);
+    this.filterService.showFilter(this.isFilterShown);
   }
-
 }
