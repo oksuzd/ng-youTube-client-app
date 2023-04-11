@@ -5,6 +5,10 @@
     width: 0;
     height: 0;
     background: content-box;
+
+    :hover {
+      cursor: pointer;
+    }
   }
 
 }

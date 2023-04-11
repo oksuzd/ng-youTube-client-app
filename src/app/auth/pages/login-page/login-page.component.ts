@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from "@auth/models/user.model";
 import { UserDataService } from "@shared/services/user-data.service";
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-login-page',
@@ -12,9 +13,8 @@ export class LoginPageComponent implements OnInit{
   loginValue: string | null = null;
   passwordValue: string | null = null;
 
-  constructor(private userData:UserDataService) {
-
-  }
+  constructor(private userData:UserDataService,
+              private location: Location) {}
 
   ngOnInit() {
     let data = this.userData.loadData();
@@ -28,7 +28,7 @@ export class LoginPageComponent implements OnInit{
       password: this.passwordValue
     };
     this.userData.saveData(this.user);
-
+    this.location.back();
   }
 
   logOut() {
