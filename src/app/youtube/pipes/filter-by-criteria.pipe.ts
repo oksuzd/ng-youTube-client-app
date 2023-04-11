@@ -1,15 +1,12 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import moment from "moment";
-import { Criteria, Item } from "@youtube/models";
-
+import moment from 'moment';
+import { Criteria, Item } from '@youtube/models';
 
 @Pipe({
-  name: 'filterByCriteria'
+  name: 'filterByCriteria',
 })
 export class FilterByCriteriaPipe implements PipeTransform {
-
   transform(allItems: Item[], criteria: Criteria): Item[] {
-
     switch (criteria?.name) {
       case 'popular':
         return this.setCriteriaByPopular(allItems, criteria.status);
@@ -33,9 +30,13 @@ export class FilterByCriteriaPipe implements PipeTransform {
 
   private setCriteriaByDate(allItems: Item[], status: boolean): Item[] {
     if (!status) {
-      return allItems.sort((a, b) => moment(a.publishedAt).diff(moment(b.publishedAt)));
+      return allItems.sort((a, b) =>
+        moment(a.publishedAt).diff(moment(b.publishedAt))
+      );
     }
-    return allItems.sort((a, b) => moment(b.publishedAt).diff(moment(a.publishedAt)));
+    return allItems.sort((a, b) =>
+      moment(b.publishedAt).diff(moment(a.publishedAt))
+    );
   }
 
   private setCriteriaByViews(allItems: Item[], status: boolean): Item[] {

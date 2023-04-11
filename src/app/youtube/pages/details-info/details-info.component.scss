@@ -6,7 +6,7 @@
   margin: auto;
   position: relative;
 
-  app-back-button{
+  app-back-button {
     position: absolute;
     top: 14px;
     left: -38px;
@@ -44,7 +44,7 @@
 
 .detail-card-img {
   max-width: 100%;
-  background-color: #C4C4C4;
+  background-color: #c4c4c4;
 }
 
 .detail-card-title {
@@ -89,7 +89,6 @@
   display: flex;
   gap: 2px;
 }
-
 
 .detail-card-feedback-text {
   font-weight: 400;

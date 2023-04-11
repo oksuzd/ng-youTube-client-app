@@ -6,24 +6,27 @@ import {
   Route,
   RouterStateSnapshot,
   UrlSegment,
-  UrlTree
+  UrlTree,
 } from '@angular/router';
 import { Observable, take } from 'rxjs';
-import { UserDataService } from "@shared/services/user-data.service";
+import { UserDataService } from '@shared/services/user-data.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthGuard implements CanActivate, CanLoad {
-
   isAuth: boolean = false;
 
-  constructor(private userData: UserDataService) {
-  }
+  constructor(private userData: UserDataService) {}
 
   canActivate(
     route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    state: RouterStateSnapshot
+  ):
+    | Observable<boolean | UrlTree>
+    | Promise<boolean | UrlTree>
+    | boolean
+    | UrlTree {
     this.createSubscriptionOnUserAuth();
     console.log('canActivate: ', this.isAuth);
     return this.isAuth;
@@ -31,17 +34,20 @@ export class AuthGuard implements CanActivate, CanLoad {
 
   canLoad(
     route: Route,
-    segments: UrlSegment[]): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    segments: UrlSegment[]
+  ):
+    | Observable<boolean | UrlTree>
+    | Promise<boolean | UrlTree>
+    | boolean
+    | UrlTree {
     this.createSubscriptionOnUserAuth();
     console.log('canLoad: ', this.isAuth);
     return this.isAuth;
   }
 
   private createSubscriptionOnUserAuth() {
-    this.userData.userLogin$
-      .pipe(take(1))
-      .subscribe(res => {
-        this.isAuth = !!res;
-      })
+    this.userData.userLogin$.pipe(take(1)).subscribe((res) => {
+      this.isAuth = !!res;
+    });
   }
 }

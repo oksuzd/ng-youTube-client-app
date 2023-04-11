@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Item } from "@youtube/models";
+import { Item } from '@youtube/models';
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class DataStoreService {
-
   private data: Item | undefined;
 
-  constructor() { }
+  constructor() {}
 
   setDataItem(data: Item): void {
     this.data = data;

@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
-import { SharedModule } from "@shared/shared.module";
-import { ReactiveFormsModule } from "@angular/forms";
-import { RouterModule, Routes } from "@angular/router";
+import { SharedModule } from '@shared/shared.module';
+import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -11,9 +11,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [
-    LoginPageComponent
-  ],
+  declarations: [LoginPageComponent],
   imports: [
     CommonModule,
     SharedModule,
@@ -21,4 +19,4 @@ const routes: Routes = [
     RouterModule.forChild(routes),
   ],
 })
-export class AuthModule { }
+export class AuthModule {}

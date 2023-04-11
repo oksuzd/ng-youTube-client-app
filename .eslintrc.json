@@ -1,36 +1,91 @@
 {
   "root": true,
   "ignorePatterns": [
-    "projects/**/*"
+    "v2/polyfills/*",
+    "v2/app/common/message.constants.ts"
   ],
   "overrides": [
     {
       "files": [
         "*.ts"
       ],
+      "parserOptions": {
+        "project": [
+          "tsconfig.app.json"
+        ],
+        "createDefaultProgram": true
+      },
+      "plugins": [
+        "prefer-arrow"
+      ],
       "extends": [
-        "eslint:recommended",
-        "plugin:@typescript-eslint/recommended",
         "plugin:@angular-eslint/recommended",
+        "plugin:@angular-eslint/ng-cli-compat",
+        "plugin:@angular-eslint/ng-cli-compat--formatting-add-on",
         "plugin:@angular-eslint/template/process-inline-templates"
+        /*temporary disabled*/
+        /*"plugin:prettier/recommended"*/
       ],
       "rules": {
-        "@angular-eslint/directive-selector": [
-          "error",
-          {
-            "type": "attribute",
-            "prefix": "app",
-            "style": "camelCase"
-          }
-        ],
         "@angular-eslint/component-selector": [
           "error",
           {
             "type": "element",
-            "prefix": "app",
+            "prefix": "val",
             "style": "kebab-case"
           }
-        ]
+        ],
+        "@angular-eslint/directive-selector": [
+          "error",
+          {
+            "type": "attribute",
+            "prefix": "val",
+            "style": "camelCase"
+          }
+        ],
+        "@typescript-eslint/dot-notation": "off",
+        "@typescript-eslint/explicit-member-accessibility": [
+          "error",
+          {
+            "accessibility": "no-public"
+          }
+        ],
+        "brace-style": [
+          "error",
+          "1tbs"
+        ],
+        // https://eslint.org/docs/rules/comma-dangle
+        "comma-dangle": [
+          "error",
+          "always-multiline"
+        ],
+        "no-trailing-spaces": "off",
+        "jsdoc/newline-after-description": "off",
+        "jsdoc/no-types": "off",
+        /*temporary disabled*/
+        "prefer-arrow/prefer-arrow-functions": "off",
+        "@angular-eslint/no-input-rename": "off",
+        "@angular-eslint/no-output-native": "off",
+        //				https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/consistent-type-assertions.md
+        "@typescript-eslint/consistent-type-assertions": "off",
+        "@typescript-eslint/ban-types": "off",
+        "@angular-eslint/no-output-on-prefix": "off",
+        //				https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/naming-convention.md
+        "@typescript-eslint/naming-convention": "off",
+        "@typescript-eslint/member-ordering": "off",
+        "@typescript-eslint/no-shadow": "off",
+        "@typescript-eslint/no-namespace": "off",
+        //				https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/no-inferrable-types.md
+        "@typescript-eslint/no-inferrable-types": "off",
+        "@angular-eslint/no-conflicting-lifecycle": "off",
+        "@angular-eslint/no-empty-lifecycle-method": "off",
+        "@angular-eslint/component-class-suffix": "off",
+        //				https://eslint.org/docs/rules/max-len#enforce-a-maximum-line-length-max-len Not needed if used plugin:prettier/recommended
+        "max-len": "off",
+        //				https://eslint.org/docs/rules/no-underscore-dangle
+        "no-underscore-dangle": "off",
+        "@typescript-eslint/no-unused-expressions": "off",
+        "@angular-eslint/no-host-metadata-property": "off"
       }
     },
     {
@@ -41,6 +96,62 @@
         "plugin:@angular-eslint/template/recommended"
       ],
       "rules": {}
+    },
+    /*temporary disabled*/
+    /*{
+      "files": [
+        "*.html"
+      ],
+      "excludedFiles": [
+        "*inline-template-*.component.html"
+      ],
+      "extends": [
+        "plugin:prettier/recommended"
+      ],
+      "rules": {
+        "prettier/prettier": [
+          "error",
+          {
+            "parser": "angular"
+          }
+        ]
+      }
+    },*/
+    {
+      "files": [
+        "*.js"
+      ],
+      "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module"
+      },
+      "rules": {
+        "no-alert": "error",
+        "no-debugger": "warn",
+        "no-console": "warn",
+        "array-callback-return": "error",
+        "block-scoped-var": "error",
+        "guard-for-in": "error",
+        "no-caller": "error",
+        "no-empty-pattern": "error",
+        "no-eval": "error",
+        "no-implicit-globals": "error",
+        "no-proto": "error",
+        "no-self-assign": "error",
+        "no-global-assign": "error",
+        "no-implied-eval": "error",
+        "no-redeclare": "error",
+        "no-useless-return": "error",
+        "no-cond-assign": "error",
+        "no-dupe-keys": "error",
+        "no-dupe-args": "error",
+        "no-unreachable": "error",
+        "no-unsafe-finally": "error",
+        "semi": "error",
+        "no-extra-semi": "warn",
+        "no-obj-calls": "warn",
+        "wrap-iife": "warn"
+      }
     }
   ]
 }

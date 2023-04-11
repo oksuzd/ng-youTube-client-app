@@ -1,16 +1,16 @@
 export interface Item {
-  id: string,
-  imgUrl: string,
-  views: number,
-  likes: number,
-  isLiked?: boolean,
-  dislikes: number,
-  isDisliked?: boolean,
-  comments: number,
-  title: string,
-  publishedAt?: string,
-  description?: string | null,
-  dataBar: BarColor
+  id: string;
+  imgUrl: string;
+  views: number;
+  likes: number;
+  isLiked?: boolean;
+  dislikes: number;
+  isDisliked?: boolean;
+  comments: number;
+  title: string;
+  publishedAt?: string;
+  description?: string | null;
+  dataBar: BarColor;
 }
 
 export enum BarColor {

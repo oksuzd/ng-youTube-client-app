@@ -1,18 +1,20 @@
 import { Injectable } from '@angular/core';
-import { BarColor, Item, Response } from "@youtube/models";
-import { RESPONSE_DATA } from "@youtube/services/mock-data";
-import moment from "moment/moment";
-import { BehaviorSubject, Observable } from "rxjs";
+import { BarColor, Item, Response } from '@youtube/models';
+import { RESPONSE_DATA } from '@youtube/services/mock-data';
+import moment from 'moment/moment';
+import { BehaviorSubject, Observable } from 'rxjs';
 
-
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class SearchResultDataService {
+  private _searchResultData$: BehaviorSubject<string> =
+    new BehaviorSubject<string>('');
+  readonly searchResultData$: Observable<string> =
+    this._searchResultData$.asObservable();
 
-  private _searchResultData$: BehaviorSubject<string> = new BehaviorSubject<string>('');
-  readonly searchResultData$: Observable<string> = this._searchResultData$.asObservable();
-
-  private _filterIsShown$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  readonly filterIsShown$: Observable<boolean> = this._filterIsShown$.asObservable();
+  private _filterIsShown$: BehaviorSubject<boolean> =
+    new BehaviorSubject<boolean>(false);
+  readonly filterIsShown$: Observable<boolean> =
+    this._filterIsShown$.asObservable();
 
   constructor() {}
 
@@ -21,15 +23,17 @@ export class SearchResultDataService {
   }
 
   getItemById(id: string): Item | undefined {
-    return this.mapData(RESPONSE_DATA, true).find(item => item.id === id)
+    return this.mapData(RESPONSE_DATA, true).find((item) => item.id === id);
   }
 
-  private mapData(data: Response, isDetailed: boolean=false): Item[] {
-    return data.items.map(item => {
+  private mapData(data: Response, isDetailed: boolean = false): Item[] {
+    return data.items.map((item) => {
       return {
         id: item.id,
         title: item.snippet.title,
-        imgUrl: isDetailed ? item.snippet.thumbnails.maxres.url : item.snippet.thumbnails.medium.url,
+        imgUrl: isDetailed
+          ? item.snippet.thumbnails.maxres.url
+          : item.snippet.thumbnails.medium.url,
         comments: +item.statistics.commentCount,
         dislikes: +item.statistics.dislikeCount,
         likes: +item.statistics.likeCount,
@@ -37,12 +41,11 @@ export class SearchResultDataService {
         publishedAt: item.snippet.publishedAt,
         description: isDetailed ? item.snippet.description : null,
         dataBar: this.getDataBarColor(item.snippet.publishedAt),
-      }
+      };
     });
   }
 
   private getDataBarColor(date: string): BarColor {
-
     const daysAmount = moment(new Date()).diff(moment(date), 'days');
     const monthAmount = moment(new Date()).diff(moment(date), 'months');
 

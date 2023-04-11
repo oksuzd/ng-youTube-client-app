@@ -1,5 +1,8 @@
 <app-filter *ngIf="isShown" (onCriteria)="onCriteria($event)"></app-filter>
 <div class="container search-result-cards">
-  <div *ngIf="!this.items.length">{{hasText ? 'no results' : 'input' }}</div>
-  <app-search-item *ngFor="let item of items | filterByCriteria: criteria" [item]="item"></app-search-item>
+  <div *ngIf="!this.items.length">{{ hasText ? "no results" : "input" }}</div>
+  <app-search-item
+    *ngFor="let item of items | filterByCriteria : criteria"
+    [item]="item"
+  ></app-search-item>
 </div>

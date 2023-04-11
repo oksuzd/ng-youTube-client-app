@@ -1,4 +1,4 @@
 export interface Criteria {
-  name: string,
-  status: boolean
+  name: string;
+  status: boolean;
 }
