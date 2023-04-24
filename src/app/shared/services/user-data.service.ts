@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { User } from '@auth/models/user.model';
 import { BehaviorSubject, Observable } from 'rxjs';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({providedIn: 'root'})
 export class UserDataService {
   private readonly authKey: string = 'isAuthorised';
 
@@ -11,7 +11,8 @@ export class UserDataService {
   );
   readonly userLogin$: Observable<string> = this._userLogin$.asObservable();
 
-  constructor() {}
+  constructor() {
+  }
 
   saveData(user: User): void {
     if (user?.login && user?.password) {

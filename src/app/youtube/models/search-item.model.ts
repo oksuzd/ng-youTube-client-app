@@ -1,14 +1,14 @@
-export interface Item {
+export interface DetailedItem {
   id: string;
-  imgUrl: string;
+  imgUrl?: string;
   views: number;
   likes: number;
   isLiked?: boolean;
-  dislikes: number;
+  dislikes?: number | string;
   isDisliked?: boolean;
   comments: number;
   title: string;
-  publishedAt?: string;
+  publishedAt?: string | Date;
   description?: string | null;
   dataBar: BarColor;
 }

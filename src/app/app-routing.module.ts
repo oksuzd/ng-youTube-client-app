@@ -15,8 +15,8 @@ const routes: Routes = [
     path: 'youtube',
     loadChildren: () =>
       import('./youtube/youtube.module').then((m) => m.YoutubeModule),
-    canActivate: [AuthGuard],
-    canLoad: [AuthGuard],
+    // canActivate: [AuthGuard],
+    // canLoad: [AuthGuard],
   },
   { path: '**', component: NotFoundComponent },
 ];

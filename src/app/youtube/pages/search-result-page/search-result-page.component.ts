@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { SearchResultDataService } from '@youtube/services';
-import { Criteria, Item } from '@youtube/models';
+import { Criteria, DetailedItem } from '@youtube/models';
+import { NgxSpinnerService } from "ngx-spinner";
+import { debounce, debounceTime, delay, interval, tap } from "rxjs";
 
 @Component({
   selector: 'app-search-result-page',
@@ -9,21 +11,35 @@ import { Criteria, Item } from '@youtube/models';
 })
 export class SearchResultPageComponent {
   isShown: boolean = false;
-  items: Item[] = [];
-  hasText: boolean = false;
+  items: DetailedItem[] = [];
+  // hasText: boolean = false;
   criteria!: Criteria;
 
-  private _items: Item[] = [];
+  private _items: DetailedItem[] = [];
 
   constructor(
+    private spinner: NgxSpinnerService,
     private searchResultService: SearchResultDataService,
     private filterService: SearchResultDataService
-  ) {}
+  ) {
+  }
 
   ngOnInit() {
-    this._items = this.searchResultService.getData();
-    this.createSubscriptionOnSearch();
-    this.createSubscriptionOnFilter();
+    this.spinner.show().then();
+
+
+    // this._items = this.searchResultService.getData();
+    this.searchResultService.getData()
+      .pipe(
+        delay(300),
+        tap(res => console.log('res: ', res))
+      )
+      .subscribe(res => {
+        this._items = res
+        this.createSubscriptionOnSearch();
+        this.createSubscriptionOnFilter();
+        this.spinner.hide().then()
+      })
   }
 
   createSubscriptionOnSearch() {

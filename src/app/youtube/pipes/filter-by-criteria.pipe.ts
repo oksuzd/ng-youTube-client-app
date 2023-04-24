@@ -1,12 +1,12 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import moment from 'moment';
-import { Criteria, Item } from '@youtube/models';
+import { Criteria, DetailedItem } from '@youtube/models';
 
 @Pipe({
   name: 'filterByCriteria',
 })
 export class FilterByCriteriaPipe implements PipeTransform {
-  transform(allItems: Item[], criteria: Criteria): Item[] {
+  transform(allItems: DetailedItem[], criteria: Criteria): DetailedItem[] {
     switch (criteria?.name) {
       case 'popular':
         return this.setCriteriaByPopular(allItems, criteria.status);
@@ -21,14 +21,14 @@ export class FilterByCriteriaPipe implements PipeTransform {
     }
   }
 
-  private setCriteriaByPopular(allItems: Item[], status: boolean): Item[] {
+  private setCriteriaByPopular(allItems: DetailedItem[], status: boolean): DetailedItem[] {
     if (!status) {
       return allItems;
     }
-    return allItems.filter((item) => item.likes >= 1000);
+    return allItems.filter((item) => item.likes >= 50000);
   }
 
-  private setCriteriaByDate(allItems: Item[], status: boolean): Item[] {
+  private setCriteriaByDate(allItems: DetailedItem[], status: boolean): DetailedItem[] {
     if (!status) {
       return allItems.sort((a, b) =>
         moment(a.publishedAt).diff(moment(b.publishedAt))
@@ -39,14 +39,14 @@ export class FilterByCriteriaPipe implements PipeTransform {
     );
   }
 
-  private setCriteriaByViews(allItems: Item[], status: boolean): Item[] {
+  private setCriteriaByViews(allItems: DetailedItem[], status: boolean): DetailedItem[] {
     if (!status) {
       return allItems.sort((a, b) => a.views - b.views);
     }
     return allItems.sort((a, b) => b.views - a.views);
   }
 
-  private setCriteriaByAlphabet(allItems: Item[], status: boolean): Item[] {
+  private setCriteriaByAlphabet(allItems: DetailedItem[], status: boolean): DetailedItem[] {
     if (!status) {
       return allItems.sort((a, b) => b.title.localeCompare(a.title));
     }

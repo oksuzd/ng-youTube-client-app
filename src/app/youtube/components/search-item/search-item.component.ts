@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Item } from '@youtube/models';
 import { Router } from '@angular/router';
-import { DataStoreService } from '@youtube/services/data-store.service';
+import { DetailedItem } from "@youtube/models";
+import { DataStoreService } from "@youtube/services";
 
 @Component({
   selector: 'app-search-item',
@@ -9,7 +9,7 @@ import { DataStoreService } from '@youtube/services/data-store.service';
   styleUrls: ['./search-item.component.scss'],
 })
 export class SearchItemComponent implements OnInit {
-  @Input() public item!: Item;
+  @Input() public item!: DetailedItem;
 
   constructor(private router: Router, private stateService: DataStoreService) {}
 

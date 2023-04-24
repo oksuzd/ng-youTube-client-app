@@ -8,6 +8,7 @@ import { FilterByCriteriaPipe } from './pipes/filter-by-criteria.pipe';
 import { DetailsInfoComponent } from './pages/details-info/details-info.component';
 import { SearchResultPageComponent } from './pages/search-result-page/search-result-page.component';
 import { RouterModule, Routes } from '@angular/router';
+import { NgxSpinnerModule } from "ngx-spinner";
 
 const routes: Routes = [
   { path: '', redirectTo: 'search-result', pathMatch: 'full' },
@@ -24,7 +25,14 @@ const routes: Routes = [
     DetailsInfoComponent,
     SearchResultPageComponent,
   ],
-  imports: [CommonModule, SharedModule, RouterModule.forChild(routes)],
-  exports: [SearchItemComponent, FilterComponent],
+    imports: [
+        CommonModule,
+        SharedModule,
+        RouterModule.forChild(routes),
+        NgxSpinnerModule
+    ],
+  exports: [
+    SearchItemComponent,
+    FilterComponent],
 })
 export class YoutubeModule {}

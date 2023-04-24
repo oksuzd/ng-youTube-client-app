@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Item } from '@youtube/models';
 import { ActivatedRoute } from '@angular/router';
 import { SearchResultDataService } from '@youtube/services';
+import { DetailedItem } from "@youtube/models";
 
 @Component({
   selector: 'app-details-info',
@@ -9,7 +9,7 @@ import { SearchResultDataService } from '@youtube/services';
   styleUrls: ['./details-info.component.scss'],
 })
 export class DetailsInfoComponent implements OnInit {
-  item!: Item | undefined;
+  item!: DetailedItem | undefined;
 
   constructor(
     public route: ActivatedRoute,
