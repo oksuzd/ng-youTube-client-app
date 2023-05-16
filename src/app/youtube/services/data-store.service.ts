@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
-import { DetailedItem } from "@youtube/models";
+import { RenderedItem } from "@youtube/models";
 
 @Injectable({ providedIn: 'root' })
 export class DataStoreService {
-  private data: DetailedItem | undefined;
+  private data: RenderedItem | undefined;
 
   constructor() {}
 
-  setDataItem(data: DetailedItem): void {
+  setSearchTermDataItem(data: RenderedItem): void {
     this.data = data;
   }
 }

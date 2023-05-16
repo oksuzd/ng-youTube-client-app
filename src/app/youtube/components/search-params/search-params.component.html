@@ -1,0 +1,27 @@
+<div class="filter-title">Sorting by:</div>
+
+<mat-radio-group
+  aria-labelledby="Select an option"
+  [(ngModel)]="searchParams.order"
+>
+  <mat-radio-button
+    color="primary"
+    *ngFor="let order of searchResultsOrder"
+    [value]="order"
+    (change)="onOrderChange($event)"
+    >
+    {{order}}
+  </mat-radio-button>
+</mat-radio-group>
+
+<mat-form-field appearance="fill">
+  <mat-label>Max Results</mat-label>
+  <mat-select [(value)]="searchParams.maxResults"
+              (valueChange)="onMaxResultsChange($event)">
+    <mat-option [value]="option.value"
+                *ngFor="let option of dropOptions"
+    >
+      {{ option.viewValue }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>

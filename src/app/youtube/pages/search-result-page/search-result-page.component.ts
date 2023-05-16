@@ -1,72 +1,57 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SearchResultDataService } from '@youtube/services';
-import { Criteria, DetailedItem } from '@youtube/models';
+import { RenderedItem, } from '@youtube/models';
 import { NgxSpinnerService } from "ngx-spinner";
-import { debounce, debounceTime, delay, interval, tap } from "rxjs";
+import { debounceTime, delay, take } from "rxjs";
 
 @Component({
   selector: 'app-search-result-page',
   templateUrl: './search-result-page.component.html',
   styleUrls: ['./search-result-page.component.scss'],
 })
-export class SearchResultPageComponent {
+export class SearchResultPageComponent implements OnInit {
   isShown: boolean = false;
-  items: DetailedItem[] = [];
-  // hasText: boolean = false;
-  criteria!: Criteria;
-
-  private _items: DetailedItem[] = [];
+  items: RenderedItem[] = [];
 
   constructor(
     private spinner: NgxSpinnerService,
+    private searchParamsBarService: SearchResultDataService,
+    private searchParamsService: SearchResultDataService,
     private searchResultService: SearchResultDataService,
-    private filterService: SearchResultDataService
   ) {
   }
 
   ngOnInit() {
-    this.spinner.show().then();
-
-
-    // this._items = this.searchResultService.getData();
-    this.searchResultService.getData()
-      .pipe(
-        delay(300),
-        tap(res => console.log('res: ', res))
-      )
-      .subscribe(res => {
-        this._items = res
-        this.createSubscriptionOnSearch();
-        this.createSubscriptionOnFilter();
-        this.spinner.hide().then()
-      })
+    this.createSubscriptionOnSearchParamsBar();
+    this.createSubscriptionOnSearch();
   }
 
-  createSubscriptionOnSearch() {
-    this.searchResultService.searchResultData$.subscribe((inputText) =>
-      this.getItems(inputText)
-    );
-  }
-
-  createSubscriptionOnFilter() {
-    this.filterService.filterIsShown$.subscribe(
+  createSubscriptionOnSearchParamsBar() {
+    this.searchParamsBarService.searchParamsIsShown$.subscribe(
       (flag) => (this.isShown = flag)
     );
   }
 
-  getItems(inputText: string): void {
-    const getConfiguredText = (text: string) => text.toLowerCase().trim();
-    this.items = [];
-    this._items.forEach((item) => {
-      if (
-        getConfiguredText(item.title).includes(getConfiguredText(inputText))
-      ) {
-        this.items.push(item);
-      }
-    });
-  }
-
-  onCriteria(event: Criteria): void {
-    this.criteria = event;
+  createSubscriptionOnSearch() {
+    this.searchParamsService.searchParamsData$
+      .subscribe((params) => {
+        this.searchResultService.searchResultData$
+          .pipe(
+            debounceTime(500),
+          )
+          .subscribe(query => {
+            if (query) {
+              this.spinner.show().then();
+              this.searchResultService.getSearchResultData(query, params.maxResults, params.order)
+                .pipe(take(1),
+                  delay(200),
+                )
+                .subscribe(items => {
+                  this.items = items;
+                  this.spinner.hide().then();
+                })
+            }
+          })
+      })
   }
 }

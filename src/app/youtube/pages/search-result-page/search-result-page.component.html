@@ -1,12 +1,7 @@
-<app-filter *ngIf="isShown" (onCriteria)="onCriteria($event)"></app-filter>
+<app-search-params *ngIf="isShown"></app-search-params>
 <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-scale-multiple">
   <p style="font-size: 20px; color: white">Loading...</p>
 </ngx-spinner>
 <div class="container search-result-cards">
-<!--  <div *ngIf="!this.items.length">{{ hasText ? "no results" : "input" }}</div>-->
-  <div *ngIf="!this.items.length">{{"no results"}}</div>
-  <app-search-item
-    *ngFor="let item of items | filterByCriteria : criteria"
-    [item]="item"
-  ></app-search-item>
+  <app-search-item *ngFor="let item of items" [item]="item"></app-search-item>
 </div>

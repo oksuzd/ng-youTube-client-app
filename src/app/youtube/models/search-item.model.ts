@@ -13,10 +13,33 @@ export interface DetailedItem {
   dataBar: BarColor;
 }
 
+export interface RenderedItem {
+  id: string;
+  imgUrl?: string;
+  title: string;
+  channelTitle: string;
+  publishedAt: string | Date;
+  description?: string | null;
+  dataBar?: BarColor;
+}
+
 export enum BarColor {
-  blue = '#2F80ED',
-  red = 'red',
-  yellow = 'yellow',
-  green = 'green',
-  default = '#E5E5E5',
+  Blue = '#2F80ED',
+  Red = 'Red',
+  Yellow = 'Yellow',
+  Green = 'Green',
+  Default = '#E5E5E5',
+}
+
+export enum OrderParam {
+  Date = 'Date',
+  Rating = 'Rating',
+  ViewCount = 'ViewCount',
+  Title = 'Title',
+  Relevance = 'Relevance'
+}
+
+export interface SearchParams {
+  order?: OrderParam;
+  maxResults?: string | undefined;
 }

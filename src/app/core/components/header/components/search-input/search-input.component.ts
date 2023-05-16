@@ -9,9 +9,16 @@ import { SearchResultDataService } from '@youtube/services';
 export class SearchInputComponent {
   inputValue: string = '';
 
-  constructor(private searchResultService: SearchResultDataService) {}
+  constructor(private searchResultService: SearchResultDataService) {
+  }
 
-  search(): void {
-    this.searchResultService.setData(this.inputValue);
+  buttonSearch(): void {
+    this.searchResultService.setSearchTermData(this.inputValue);
+  }
+
+  liveSearch(event: string): void {
+    if (event.length >= 3) {
+      this.searchResultService.setSearchTermData(event);
+    }
   }
 }

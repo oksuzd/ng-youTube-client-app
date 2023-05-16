@@ -1,28 +1,22 @@
 <div class="container">
   <app-back-button></app-back-button>
   <mat-card class="detail-card">
-    <div>
-      <img
-        mat-card-image
-        class="detail-card-img"
-        [src]="item?.imgUrl"
-        alt="Card image"
-      />
-    </div>
-    <div class="detail-card-info">
-      <mat-card-header>
-        <mat-card-title class="detail-card-title">{{
-          item?.title
-          }}</mat-card-title>
-      </mat-card-header>
-      <mat-card-content class="search-card-content">
+    <mat-card-content class="search-card-content">
+      <div class="detail-card-image">
+        <img
+          mat-card-image
+          class="detail-card-img"
+          [src]="item?.imgUrl"
+          alt="Card image"
+        />
+      </div>
+      <div class="detail-card-info">
+        <mat-card-title class="detail-card-title">{{item?.title}}</mat-card-title>
         <div class="detail-card-date">
           {{ item?.publishedAt | date : "fullDate" }}
         </div>
         <div class="detail-card-description-title">Description:</div>
         <div class="detail-card-description-text">{{ item?.description }}</div>
-      </mat-card-content>
-      <mat-card-footer class="search-card-footer">
         <mat-card-actions class="detail-card-feedback">
           <div class="detail-card-feedback-group">
             <img
@@ -35,13 +29,6 @@
             <img src="../../../../assets/img/liked-icon.svg" alt="liked-icon"/>
             <span class="detail-card-feedback-text">{{ item?.likes }}</span>
           </div>
-<!--          <div class="detail-card-feedback-group">-->
-<!--            <img-->
-<!--              src="../../../../assets/img/disliked-icon.svg"-->
-<!--              alt="disliked-icon"-->
-<!--            />-->
-<!--            <span class="detail-card-feedback-text">{{ item?.dislikes }}</span>-->
-<!--          </div>-->
           <div class="detail-card-feedback-group">
             <img
               src="../../../../assets/img/comments-icon.svg"
@@ -50,13 +37,15 @@
             <span class="detail-card-feedback-text">{{ item?.comments }}</span>
           </div>
         </mat-card-actions>
-        <mat-progress-bar
-          appFooterBarColor
-          [barColor]="item?.dataBar"
-          mode="determinate"
-          class="search-card-bar"
-        ></mat-progress-bar>
-      </mat-card-footer>
-    </div>
+      </div>
+    </mat-card-content>
+    <mat-card-footer class="search-card-footer">
+      <mat-progress-bar
+        appFooterBarColor
+        [barColor]="item?.dataBar"
+        mode="determinate"
+        class="search-card-bar"
+      ></mat-progress-bar>
+    </mat-card-footer>
   </mat-card>
 </div>

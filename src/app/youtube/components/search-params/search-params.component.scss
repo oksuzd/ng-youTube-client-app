@@ -1,6 +1,7 @@
 @import "src/assets/styles/colors";
 
 :host {
+  //border: 2px solid red;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,4 +22,8 @@
   line-height: 14px;
   text-decoration-line: underline;
   color: $main-blue !important;
+}
+
+.mat-mdc-radio-button ~ .mat-mdc-radio-button {
+  margin-left: 10px;
 }

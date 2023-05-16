@@ -1,97 +1,98 @@
 import { Injectable } from '@angular/core';
 import moment from 'moment/moment';
-import { BehaviorSubject, map, Observable, tap } from 'rxjs';
+import { BehaviorSubject, map, Observable } from 'rxjs';
 import { HttpClient } from "@angular/common/http";
-import { BarColor, DetailedItem, YoutubeResponse } from "@youtube/models";
+import { BarColor, OrderParam, RenderedItem, SearchParams, SearchResponse } from "@youtube/models";
 
 
 @Injectable({providedIn: 'root'})
 export class SearchResultDataService {
+
   private _searchResultData$: BehaviorSubject<string> = new BehaviorSubject<string>('');
   readonly searchResultData$: Observable<string> = this._searchResultData$.asObservable();
 
-  private _filterIsShown$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  readonly filterIsShown$: Observable<boolean> = this._filterIsShown$.asObservable();
+  private _searchParamsIsShown$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  readonly searchParamsIsShown$: Observable<boolean> = this._searchParamsIsShown$.asObservable();
+
+  private selectedSearchParams: SearchParams = {
+    order: OrderParam.Relevance,
+    maxResults: '10',
+  }
+  private prevSearchParamsState: SearchParams = this.selectedSearchParams;
+  private _searchParamsData$: BehaviorSubject<SearchParams> = new BehaviorSubject<SearchParams>(this.selectedSearchParams);
+  readonly searchParamsData$: Observable<SearchParams> = this._searchParamsData$.asObservable();
 
   private apiKey: string = 'AIzaSyBQU44dUci6KlPRK7Ogbc3zW5c0L9Ls6RU';
-  private maxResults: string = '30';
-  //TODO change type
-  videos: any = [];
 
   constructor(private http: HttpClient) {
   }
 
-  getData(): Observable<DetailedItem[]> {
-    let url = 'https://youtube.googleapis.com/youtube/v3/videos?' +
-      'part=snippet&part=statistics&chart=mostPopular&maxResults=' +
-      this.maxResults + '&key=' + this.apiKey;
+  setSearchTermData(data: string) {
+    this._searchResultData$.next(data);
+  }
 
+  setSearchParamsData(data: SearchParams) {
+    let newParams = this.prevSearchParamsState;
 
-    // let url = 'https://www.googleapis.com/youtube/v3/videos?key=' + this.apiKey
-    //   + '&id=nq4aU9gmZQk,REu2BcnlD34,qbPTdW7KgOg&part=snippet,statistics';
-    // let url = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${text}&type=video&key=${this.apiKey}`
-    return this.http.get<YoutubeResponse>(url)
+    if (data.order) {
+      this.prevSearchParamsState.order = data.order;
+      newParams.order = data.order;
+    } else if (data.maxResults) {
+      this.prevSearchParamsState.maxResults = data.maxResults;
+      newParams.maxResults = data.maxResults;
+    }
+
+    this._searchParamsData$.next(newParams);
+  }
+
+  getSearchResultData(
+    query: string,
+    maxResults: string | undefined,
+    order: OrderParam = OrderParam.Relevance,
+  ): Observable<RenderedItem[]> {
+    let url = 'https://youtube.googleapis.com/youtube/v3/search?part=snippet&' +
+      `maxResults=${maxResults}&` +
+      `order=${order}&` +
+      `q=${query}&` +
+      `key=${this.apiKey}`;
+
+    return this.http.get<SearchResponse>(url)
       .pipe(
-        tap(res => console.log('res.items: ', res.items)),
-        map((res) => this.mapData(res)
-        ))
+        map((res) => this.mapData(res))
+      )
   }
 
-  getItemById(id: string): DetailedItem | undefined {
-    // return this.mapData(RESPONSE_DATA, true).find((item) => item.id === id);
-    return this.mapData(this.videos, true).find((item) => item.id === id);
-  }
-
-  private mapData(data: YoutubeResponse, isDetailed: boolean = false): DetailedItem[] {
+  private mapData(data: SearchResponse): RenderedItem[] {
     return data.items.map((item) => {
       return {
-        id: item.id,
-        imgUrl: isDetailed
-          ? item.snippet.thumbnails.maxres?.url
-          : item.snippet.thumbnails.medium.url,
-        views: +item.statistics.viewCount,
-        likes: +item.statistics.likeCount,
-        comments: +item.statistics.commentCount,
+        id: item.id.videoId,
+        imgUrl: item.snippet.thumbnails.medium.url,
         title: item.snippet.title,
-        // id: item.id,
-        // title: item.snippet.title,
-        // imgUrl: isDetailed
-        //   ? item.snippet.thumbnails.maxres?.url
-        //   : item.snippet.thumbnails.medium.url,
-        // comments: +item.statistics.commentCount,
-        // // dislikes: +item.statistics.dislikeCount,
-        // // dislikes: '0',
-        // likes: +item.statistics.likeCount,
-        // views: +item.statistics.viewCount,
-        // publishedAt: item.snippet.publishedAt,
-        // description: isDetailed ? item.snippet.description : null,
-        dataBar: this.getDataBarColor(item.snippet.publishedAt),
-      };
-    });
+        channelTitle: item.snippet.channelTitle,
+        publishedAt: item.snippet.publishedAt,
+        dataBar: this.getSearchResultDataBarColor(item.snippet.publishedAt),
+      }
+    })
   }
 
-  private getDataBarColor(date: string | Date): BarColor {
+  private getSearchResultDataBarColor(date: string | Date): BarColor {
     const daysAmount = moment(new Date()).diff(moment(date), 'days');
     const monthAmount = moment(new Date()).diff(moment(date), 'months');
 
     if (daysAmount <= 7 && monthAmount === 0) {
-      return BarColor.blue;
+      return BarColor.Blue;
     } else if (daysAmount > 7 && monthAmount === 0) {
-      return BarColor.green;
+      return BarColor.Green;
     } else if (monthAmount >= 1 && monthAmount <= 6) {
-      return BarColor.yellow;
+      return BarColor.Yellow;
     } else if (monthAmount > 6) {
-      return BarColor.red;
+      return BarColor.Red;
     } else {
-      return BarColor.default;
+      return BarColor.Default;
     }
   }
 
-  setData(data: string) {
-    this._searchResultData$.next(data);
-  }
-
   showFilter(flag: boolean) {
-    this._filterIsShown$.next(flag);
+    this._searchParamsIsShown$.next(flag);
   }
 }

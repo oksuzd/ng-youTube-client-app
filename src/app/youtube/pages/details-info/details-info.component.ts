@@ -18,6 +18,6 @@ export class DetailsInfoComponent implements OnInit {
 
   ngOnInit() {
     const itemId = this.route.snapshot.params['id'];
-    this.item = this.dataService.getItemById(itemId);
+    // this.item = this.dataService.getItemById(itemId);
   }
 }

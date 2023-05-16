@@ -8,6 +8,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { BackButtonComponent } from './components/back-button/back-button.component';
+import { MatRadioModule } from "@angular/material/radio";
+import { MatSelectModule } from "@angular/material/select";
 
 const materialModules = [
   MatInputModule,
@@ -15,6 +17,8 @@ const materialModules = [
   MatCardModule,
   MatProgressBarModule,
   MatCheckboxModule,
+  MatRadioModule,
+  MatSelectModule,
 ];
 
 @NgModule({

@@ -1,59 +1,49 @@
-export interface YoutubeResponse {
+export interface SearchResponse {
   kind:          string;
   etag:          string;
-  items:         ResponseItem[];
   nextPageToken: string;
+  regionCode:    string;
   pageInfo:      PageInfo;
+  items:         SearchResponseItem[];
 }
 
-export interface ResponseItem {
-  kind:       Kind;
-  etag:       string;
-  id:         string;
-  snippet:    Snippet;
-  statistics: Statistics;
+export interface SearchResponseItem {
+  kind:    ItemKind;
+  etag:    string;
+  id:      ID;
+  snippet: Snippet;
 }
 
-enum Kind {
-  YoutubeVideo = "youtube#video",
+export interface ID {
+  kind:    IDKind;
+  videoId: string;
+}
+
+enum IDKind {
+}
+
+enum ItemKind {
 }
 
 interface Snippet {
-  publishedAt:           Date;
-  channelId:             string;
-  title:                 string;
-  description:           string;
-  thumbnails:            Thumbnails;
-  channelTitle:          string;
-  tags?:                 string[];
-  categoryId:            string;
-  liveBroadcastContent:  LiveBroadcastContent;
-  defaultLanguage?:      DefaultLanguage;
-  localized:             Localized;
-  defaultAudioLanguage?: string;
-}
-
-enum DefaultLanguage {
-  En = "en",
-  EnUS = "en-US",
-  Ko = "ko",
+  publishedAt:          Date | string;
+  channelId:            string;
+  title:                string;
+  description:          string;
+  thumbnails:           Thumbnails;
+  channelTitle:         string;
+  liveBroadcastContent: LiveBroadcastContent;
+  publishTime:          Date;
 }
 
 enum LiveBroadcastContent {
   None = "none",
 }
 
-interface Localized {
-  title:       string;
-  description: string;
-}
-
 interface Thumbnails {
-  default:  Default;
-  medium:   Default;
-  high:     Default;
-  standard: Default;
-  maxres?:  Default;
+  default: Default;
+  medium:  Default;
+  high:    Default;
 }
 
 interface Default {
@@ -62,75 +52,7 @@ interface Default {
   height: number;
 }
 
-interface Statistics {
-  viewCount:     string;
-  likeCount:     string;
-  favoriteCount: string;
-  commentCount:  string;
-}
-
 interface PageInfo {
   totalResults:   number;
   resultsPerPage: number;
 }
-
-// export interface YoutubeResponse {
-//   kind: string;
-//   etag: string;
-//   pageInfo: PageInfo;
-//   items: ResponseItem[];
-// }
-//
-// interface PageInfo {
-//   totalResults: number;
-//   resultsPerPage: number;
-// }
-//
-// export interface ResponseItem {
-//   kind: string;
-//   etag: string;
-//   id: string;
-//   snippet: Snippet;
-//   statistics: Statistics;
-// }
-//
-// interface Snippet {
-//   publishedAt: string | Date;
-//   channelId: string;
-//   title: string;
-//   description: string;
-//   thumbnails: Thumbnails;
-//   channelTitle: string;
-//   tags: string[];
-//   categoryId: string;
-//   liveBroadcastContent: string;
-//   localized: Localized;
-//   defaultAudioLanguage?: string;
-// }
-//
-// interface Localized {
-//   title: string;
-//   description: string;
-// }
-//
-// interface Thumbnails {
-//   default: Default;
-//   medium: Default;
-//   high: Default;
-//   standard?: Default;
-//   maxres?: Default;
-// }
-//
-// interface Default {
-//   url: string;
-//   width: number;
-//   height: number;
-// }
-//
-// interface Statistics {
-//   viewCount: string;
-//   likeCount: string;
-//   favoriteCount: string;
-//   commentCount: string;
-// }
-//

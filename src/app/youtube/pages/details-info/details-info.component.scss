@@ -1,7 +1,8 @@
 @import "../../../../assets/styles/colors";
 
 :host {
-  padding: 15px 0;
+  //padding: 15px 0;
+  //padding: 0 !important;
   //border: 2px solid red;
   margin: auto;
   position: relative;
@@ -13,11 +14,11 @@
   }
 }
 
-.detail-card {
-  //border: 2px solid blueviolet;
-  display: flex;
-  flex-direction: row;
-}
+//.detail-card {
+//  //border: 2px solid blueviolet;
+//  display: flex;
+//  flex-direction: row;
+//}
 
 .detail-card-info {
   //border: 2px solid green;
@@ -40,6 +41,12 @@
   mat-card-footer {
     flex: 0 0 30px;
   }
+}
+
+.detail-card-content {
+  padding: 0 !important;
+  display: flex;
+  //flex-direction: row;
 }
 
 .detail-card-img {

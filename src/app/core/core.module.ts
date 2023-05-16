@@ -22,7 +22,11 @@ import { RouterLink } from '@angular/router';
     MainPageComponent,
     NotFoundComponent,
   ],
-  imports: [CommonModule, SharedModule, RouterLink],
+  imports: [
+    CommonModule,
+    SharedModule,
+    RouterLink,
+  ],
   exports: [
     HeaderComponent,
     LoginComponent,
