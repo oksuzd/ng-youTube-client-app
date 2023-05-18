@@ -1,40 +1,38 @@
 <div class="container">
   <app-back-button></app-back-button>
-  <mat-card class="detail-card">
-    <mat-card-content class="search-card-content">
+  <mat-card *ngIf="item" class="detail-card">
+    <mat-card-content class="detail-card-content">
       <div class="detail-card-image">
-        <img
-          mat-card-image
-          class="detail-card-img"
-          [src]="item?.imgUrl"
-          alt="Card image"
-        />
+        <a href="https://www.youtube.com/watch?v={{item.id}}" target="_blank">
+          <img mat-card-image class="detail-card-img" [src]="item.imgUrl" alt="Card image"/>
+        </a>
       </div>
       <div class="detail-card-info">
-        <mat-card-title class="detail-card-title">{{item?.title}}</mat-card-title>
+        <mat-card-title class="detail-card-title">{{item.title}}</mat-card-title>
+        <div class="detail-card-channel">{{item.channelTitle}}</div>
         <div class="detail-card-date">
-          {{ item?.publishedAt | date : "fullDate" }}
+          {{ item.publishedAt | date : "fullDate" }}
         </div>
         <div class="detail-card-description-title">Description:</div>
-        <div class="detail-card-description-text">{{ item?.description }}</div>
+        <div class="detail-card-description-text">{{ getShortDescription(item.description!) }}</div>
         <mat-card-actions class="detail-card-feedback">
           <div class="detail-card-feedback-group">
             <img
               src="../../../../assets/img/viewed-icon.svg"
               alt="viewed-icon"
             />
-            <span class="detail-card-feedback-text">{{ item?.views }}</span>
+            <span class="detail-card-feedback-text">{{ item.views }}</span>
           </div>
           <div class="detail-card-feedback-group">
             <img src="../../../../assets/img/liked-icon.svg" alt="liked-icon"/>
-            <span class="detail-card-feedback-text">{{ item?.likes }}</span>
+            <span class="detail-card-feedback-text">{{ item.likes }}</span>
           </div>
           <div class="detail-card-feedback-group">
             <img
               src="../../../../assets/img/comments-icon.svg"
               alt="comments-icon"
             />
-            <span class="detail-card-feedback-text">{{ item?.comments }}</span>
+            <span class="detail-card-feedback-text">{{ item.comments }}</span>
           </div>
         </mat-card-actions>
       </div>
@@ -42,7 +40,7 @@
     <mat-card-footer class="search-card-footer">
       <mat-progress-bar
         appFooterBarColor
-        [barColor]="item?.dataBar"
+        [barColor]="item.dataBar"
         mode="determinate"
         class="search-card-bar"
       ></mat-progress-bar>

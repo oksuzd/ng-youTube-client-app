@@ -1,3 +1,4 @@
+// Search Results List Response
 export interface SearchResponse {
   kind:          string;
   etag:          string;
@@ -11,7 +12,7 @@ export interface SearchResponseItem {
   kind:    ItemKind;
   etag:    string;
   id:      ID;
-  snippet: Snippet;
+  snippet: SearchSnippet;
 }
 
 export interface ID {
@@ -25,12 +26,12 @@ enum IDKind {
 enum ItemKind {
 }
 
-interface Snippet {
+interface SearchSnippet {
   publishedAt:          Date | string;
   channelId:            string;
   title:                string;
   description:          string;
-  thumbnails:           Thumbnails;
+  thumbnails:           SearchThumbnails;
   channelTitle:         string;
   liveBroadcastContent: LiveBroadcastContent;
   publishTime:          Date;
@@ -40,7 +41,7 @@ enum LiveBroadcastContent {
   None = "none",
 }
 
-interface Thumbnails {
+interface SearchThumbnails {
   default: Default;
   medium:  Default;
   high:    Default;
@@ -55,4 +56,54 @@ interface Default {
 interface PageInfo {
   totalResults:   number;
   resultsPerPage: number;
+}
+
+
+// Detailed Video Response
+export interface DetailsResponse {
+  kind:     string;
+  etag:     string;
+  items:    DetailedItemResponse[];
+  pageInfo: PageInfo;
+}
+
+export interface DetailedItemResponse {
+  kind:       string;
+  etag:       string;
+  id:         string;
+  snippet:    DetailsSnippet;
+  statistics: Statistics;
+}
+
+export interface DetailsSnippet {
+  publishedAt:          Date;
+  channelId:            string;
+  title:                string;
+  description:          string;
+  thumbnails:           DetailsThumbnails;
+  channelTitle:         string;
+  tags:                 string[];
+  categoryId:           string;
+  liveBroadcastContent: string;
+  localized:            Localized;
+}
+
+export interface Localized {
+  title:       string;
+  description: string;
+}
+
+export interface DetailsThumbnails {
+  default:  Default;
+  medium:   Default;
+  high:     Default;
+  standard: Default;
+  maxres:   Default;
+}
+
+export interface Statistics {
+  viewCount:     string;
+  likeCount:     string;
+  favoriteCount: string;
+  commentCount:  string;
 }

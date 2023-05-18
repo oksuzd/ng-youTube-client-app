@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import moment from 'moment/moment';
 import { BehaviorSubject, map, Observable } from 'rxjs';
 import { HttpClient } from "@angular/common/http";
-import { BarColor, OrderParam, RenderedItem, SearchParams, SearchResponse } from "@youtube/models";
-
+import { OrderParam, RenderedItem, SearchParams, SearchResponse } from "@youtube/models";
+import { Helper } from "@shared/helpers";
+import { API_KEY } from "@shared/constants";
 
 @Injectable({providedIn: 'root'})
 export class SearchResultDataService {
@@ -22,7 +22,7 @@ export class SearchResultDataService {
   private _searchParamsData$: BehaviorSubject<SearchParams> = new BehaviorSubject<SearchParams>(this.selectedSearchParams);
   readonly searchParamsData$: Observable<SearchParams> = this._searchParamsData$.asObservable();
 
-  private apiKey: string = 'AIzaSyBQU44dUci6KlPRK7Ogbc3zW5c0L9Ls6RU';
+  // private apiKey: string = 'AIzaSyBQU44dUci6KlPRK7Ogbc3zW5c0L9Ls6RU';
 
   constructor(private http: HttpClient) {
   }
@@ -54,7 +54,7 @@ export class SearchResultDataService {
       `maxResults=${maxResults}&` +
       `order=${order}&` +
       `q=${query}&` +
-      `key=${this.apiKey}`;
+      `key=${API_KEY}`;
 
     return this.http.get<SearchResponse>(url)
       .pipe(
@@ -70,29 +70,13 @@ export class SearchResultDataService {
         title: item.snippet.title,
         channelTitle: item.snippet.channelTitle,
         publishedAt: item.snippet.publishedAt,
-        dataBar: this.getSearchResultDataBarColor(item.snippet.publishedAt),
+        dataBar: Helper.getSearchResultDataBarColor(item.snippet.publishedAt),
       }
     })
-  }
-
-  private getSearchResultDataBarColor(date: string | Date): BarColor {
-    const daysAmount = moment(new Date()).diff(moment(date), 'days');
-    const monthAmount = moment(new Date()).diff(moment(date), 'months');
-
-    if (daysAmount <= 7 && monthAmount === 0) {
-      return BarColor.Blue;
-    } else if (daysAmount > 7 && monthAmount === 0) {
-      return BarColor.Green;
-    } else if (monthAmount >= 1 && monthAmount <= 6) {
-      return BarColor.Yellow;
-    } else if (monthAmount > 6) {
-      return BarColor.Red;
-    } else {
-      return BarColor.Default;
-    }
   }
 
   showFilter(flag: boolean) {
     this._searchParamsIsShown$.next(flag);
   }
+
 }

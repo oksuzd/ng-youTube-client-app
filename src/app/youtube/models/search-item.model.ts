@@ -1,18 +1,3 @@
-export interface DetailedItem {
-  id: string;
-  imgUrl?: string;
-  views: number;
-  likes: number;
-  isLiked?: boolean;
-  dislikes?: number | string;
-  isDisliked?: boolean;
-  comments: number;
-  title: string;
-  publishedAt?: string | Date;
-  description?: string | null;
-  dataBar: BarColor;
-}
-
 export interface RenderedItem {
   id: string;
   imgUrl?: string;
@@ -21,6 +6,19 @@ export interface RenderedItem {
   publishedAt: string | Date;
   description?: string | null;
   dataBar?: BarColor;
+}
+
+export interface DetailedItem {
+  id: string;
+  title?: string;
+  channelTitle?: string;
+  publishedAt?: string | Date;
+  description?: string | null;
+  dataBar?: BarColor;
+  imgUrl?: string;
+  views?: number;
+  likes?: number;
+  comments?: number;
 }
 
 export enum BarColor {
