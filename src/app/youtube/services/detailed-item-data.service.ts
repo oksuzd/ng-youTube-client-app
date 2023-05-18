@@ -1,16 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { DetailedItem, DetailsResponse} from "@youtube/models";
-import { map, Observable } from "rxjs";
+import { catchError, map, Observable, throwError } from "rxjs";
 import { Helper } from "@shared/helpers";
 import { API_KEY } from "@shared/constants";
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Injectable({
   providedIn: 'root'
 })
 export class DetailedItemDataService {
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private snackBar: MatSnackBar) {
   }
 
   getDetailedData(id: string): Observable<DetailedItem> {
@@ -20,7 +21,14 @@ export class DetailedItemDataService {
 
     return this.http.get<DetailsResponse>(url)
       .pipe(
-        map((res) => this.mapData(res))
+        map((res) => this.mapData(res)),
+        catchError(err => {
+          // this.snackBar.open('Error getting video details', ' X ', )
+          if (err.status === 404) {
+            this.snackBar.open('Video not found', ' X ', )
+          }
+          return throwError(err)
+        })
       )
   }
 

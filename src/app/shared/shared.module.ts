@@ -10,6 +10,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { BackButtonComponent } from './components/back-button/back-button.component';
 import { MatRadioModule } from "@angular/material/radio";
 import { MatSelectModule } from "@angular/material/select";
+import { MatSnackBarModule } from "@angular/material/snack-bar";
 
 const materialModules = [
   MatInputModule,
@@ -19,6 +20,7 @@ const materialModules = [
   MatCheckboxModule,
   MatRadioModule,
   MatSelectModule,
+  MatSnackBarModule,
 ];
 
 @NgModule({

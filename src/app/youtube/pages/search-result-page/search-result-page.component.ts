@@ -2,7 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { SearchResultDataService } from '@youtube/services';
 import { RenderedItem, } from '@youtube/models';
 import { NgxSpinnerService } from "ngx-spinner";
-import { debounceTime, delay, take } from "rxjs";
+import {
+  catchError,
+  combineLatest,
+  debounceTime,
+  filter,
+  switchMap,
+  tap,
+  throwError
+} from "rxjs";
 
 @Component({
   selector: 'app-search-result-page',
@@ -33,25 +41,24 @@ export class SearchResultPageComponent implements OnInit {
   }
 
   createSubscriptionOnSearch() {
-    this.searchParamsService.searchParamsData$
-      .subscribe((params) => {
-        this.searchResultService.searchResultData$
-          .pipe(
-            debounceTime(500),
-          )
-          .subscribe(query => {
-            if (query) {
-              this.spinner.show().then();
-              this.searchResultService.getSearchResultData(query, params.maxResults, params.order)
-                .pipe(take(1),
-                  delay(200),
-                )
-                .subscribe(items => {
-                  this.items = items;
-                  this.spinner.hide().then();
-                })
-            }
-          })
+
+    combineLatest([this.searchParamsService.searchParamsData$, this.searchResultService.searchResultData$])
+      .pipe(
+        tap((res) => { this.items = !res[1] ? [] : this.items}),
+        debounceTime(300),
+        filter((res) => !!res[1]),
+        switchMap(([params, query]) => {
+          this.spinner.show().then();
+          return this.searchResultService.getSearchResultData(query, params.maxResults, params.order)
+        }),
+        catchError((error) => {
+          this.spinner.hide().then();
+          return throwError(error);
+        })
+      )
+      .subscribe(items => {
+        this.items = items;
+        this.spinner.hide().then();
       })
   }
 }

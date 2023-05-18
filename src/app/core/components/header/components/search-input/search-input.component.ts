@@ -17,7 +17,7 @@ export class SearchInputComponent {
   }
 
   liveSearch(event: string): void {
-    if (event.length >= 3) {
+    if (event.length >= 3 || !event) {
       this.searchResultService.setSearchTermData(event);
     }
   }

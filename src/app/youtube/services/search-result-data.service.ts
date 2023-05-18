@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, map, Observable } from 'rxjs';
+import { BehaviorSubject, catchError, map, Observable, throwError } from 'rxjs';
 import { HttpClient } from "@angular/common/http";
 import { OrderParam, RenderedItem, SearchParams, SearchResponse } from "@youtube/models";
 import { Helper } from "@shared/helpers";
 import { API_KEY } from "@shared/constants";
+import { MatSnackBar } from "@angular/material/snack-bar";
+
 
 @Injectable({providedIn: 'root'})
 export class SearchResultDataService {
@@ -22,12 +24,11 @@ export class SearchResultDataService {
   private _searchParamsData$: BehaviorSubject<SearchParams> = new BehaviorSubject<SearchParams>(this.selectedSearchParams);
   readonly searchParamsData$: Observable<SearchParams> = this._searchParamsData$.asObservable();
 
-  // private apiKey: string = 'AIzaSyBQU44dUci6KlPRK7Ogbc3zW5c0L9Ls6RU';
-
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private snackBar: MatSnackBar) {
   }
 
   setSearchTermData(data: string) {
+    console.log('setSearchTermData', data)
     this._searchResultData$.next(data);
   }
 
@@ -58,7 +59,14 @@ export class SearchResultDataService {
 
     return this.http.get<SearchResponse>(url)
       .pipe(
-        map((res) => this.mapData(res))
+        map((res) => this.mapData(res)),
+        catchError(err => {
+          // this.snackBar.open('Error getting list of videos', ' X ', )
+          if (err.status === 404) {
+            this.snackBar.open('Video list not found', ' X ', )
+          }
+          return throwError(err)
+        })
       )
   }
 
