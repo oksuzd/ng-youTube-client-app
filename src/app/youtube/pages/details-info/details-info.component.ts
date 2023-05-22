@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DetailedItem } from "@youtube/models";
 import { DetailedItemDataService } from "@youtube/services/detailed-item-data.service";
+import { Observable } from "rxjs";
 
 @Component({
   selector: 'app-details-info',
@@ -9,7 +10,7 @@ import { DetailedItemDataService } from "@youtube/services/detailed-item-data.se
   styleUrls: ['./details-info.component.scss'],
 })
 export class DetailsInfoComponent implements OnInit {
-  item!: DetailedItem;
+  item$: Observable<DetailedItem> | undefined;
 
   constructor(
     public route: ActivatedRoute,
@@ -19,8 +20,7 @@ export class DetailsInfoComponent implements OnInit {
 
   ngOnInit() {
     const itemId = this.route.snapshot.params['id'];
-    this.detailsDataService.getDetailedData(itemId)
-      .subscribe((item) => this.item = item);
+    this.item$ = this.detailsDataService.getDetailedData(itemId)
   }
 
   getShortDescription(text: string): string {

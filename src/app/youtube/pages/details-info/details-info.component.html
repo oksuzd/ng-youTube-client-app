@@ -1,6 +1,6 @@
 <div class="container">
   <app-back-button></app-back-button>
-  <mat-card *ngIf="item" class="detail-card">
+  <mat-card *ngIf="item$ | async as item" class="detail-card">
     <mat-card-content class="detail-card-content">
       <div class="detail-card-image">
         <a href="https://www.youtube.com/watch?v={{item.id}}" target="_blank">

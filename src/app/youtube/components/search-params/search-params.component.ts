@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { SearchResultDataService } from "@youtube/services";
 import { OrderParam, SearchParams } from "@youtube/models";
 import { MatRadioChange } from "@angular/material/radio";
+import { Subject, takeUntil } from "rxjs";
+
 
 interface DropOptions {
   value: string;
@@ -13,7 +15,7 @@ interface DropOptions {
   templateUrl: './search-params.component.html',
   styleUrls: ['./search-params.component.scss']
 })
-export class SearchParamsComponent implements OnInit {
+export class SearchParamsComponent implements OnInit, OnDestroy {
   dropOptions: DropOptions[] = [
     {value: '10', viewValue: '10'},
     {value: '20', viewValue: '20'},
@@ -21,19 +23,19 @@ export class SearchParamsComponent implements OnInit {
     {value: '40', viewValue: '40'},
     {value: '50', viewValue: '50'},
   ];
-
   searchResultsOrder: OrderParam[] = Object.values(OrderParam);
   searchParams: SearchParams = {
     order: OrderParam.Relevance,
     maxResults: ''
-  }
+  };
+  notifier$: Subject<null> = new Subject();
 
   constructor(private searchParamsData: SearchResultDataService) {
   }
 
   ngOnInit() {
-    console.log('this.searchParams', this.searchParams);
     this.searchParamsData.searchParamsData$
+      .pipe(takeUntil(this.notifier$))
       .subscribe(params => this.searchParams = params);
   }
 
@@ -43,5 +45,10 @@ export class SearchParamsComponent implements OnInit {
 
   onOrderChange(event: MatRadioChange) {
     this.searchParamsData.setSearchParamsData({order: event.value})
+  }
+
+  ngOnDestroy(): void {
+    this.notifier$.next(null);
+    this.notifier$.complete()
   }
 }

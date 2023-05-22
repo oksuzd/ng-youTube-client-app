@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { SearchResultDataService } from '@youtube/services';
 import { RenderedItem, } from '@youtube/models';
 import { NgxSpinnerService } from "ngx-spinner";
@@ -6,8 +6,8 @@ import {
   catchError,
   combineLatest,
   debounceTime,
-  filter,
-  switchMap,
+  filter, Subject,
+  switchMap, takeUntil,
   tap,
   throwError
 } from "rxjs";
@@ -17,9 +17,11 @@ import {
   templateUrl: './search-result-page.component.html',
   styleUrls: ['./search-result-page.component.scss'],
 })
-export class SearchResultPageComponent implements OnInit {
+export class SearchResultPageComponent implements OnInit, OnDestroy {
   isShown: boolean = false;
   items: RenderedItem[] = [];
+  notifier$: Subject<null> = new Subject();
+
 
   constructor(
     private spinner: NgxSpinnerService,
@@ -35,7 +37,9 @@ export class SearchResultPageComponent implements OnInit {
   }
 
   createSubscriptionOnSearchParamsBar() {
-    this.searchParamsBarService.searchParamsIsShown$.subscribe(
+    this.searchParamsBarService.searchParamsIsShown$
+      .pipe(takeUntil(this.notifier$))
+      .subscribe(
       (flag) => (this.isShown = flag)
     );
   }
@@ -54,11 +58,17 @@ export class SearchResultPageComponent implements OnInit {
         catchError((error) => {
           this.spinner.hide().then();
           return throwError(error);
-        })
+        }),
+        takeUntil(this.notifier$)
       )
       .subscribe(items => {
         this.items = items;
         this.spinner.hide().then();
       })
+  }
+
+  ngOnDestroy(): void {
+    this.notifier$.next(null);
+    this.notifier$.complete()
   }
 }

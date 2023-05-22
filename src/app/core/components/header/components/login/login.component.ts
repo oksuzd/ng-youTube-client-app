@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserDataService } from '@shared/services/user-data.service';
-import { debounceTime } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -8,17 +8,12 @@ import { debounceTime } from 'rxjs';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  userName: string | null = '';
+  userName$: Observable<string> | undefined;
 
-  constructor(private userData: UserDataService) {}
-
-  ngOnInit() {
-    this.createSubscriptionOnUserAuth();
+  constructor(private userData: UserDataService) {
   }
 
-  private createSubscriptionOnUserAuth() {
-    this.userData.userLogin$.pipe(debounceTime(1000)).subscribe((res) => {
-      this.userName = res ? (this.userName = res) : 'Your Name';
-    });
+  ngOnInit() {
+    this.userName$ = this.userData.userLogin$
   }
 }

@@ -41,8 +41,8 @@ export class AuthGuard implements CanActivate, CanLoad {
   }
 
   private createSubscriptionOnUserAuth() {
-    this.userData.userLogin$.pipe(take(1)).subscribe((res) => {
-      this.isAuth = !!res;
-    });
+    this.userData.userLogin$
+      .pipe(take(1))
+      .subscribe((res) => this.isAuth = !!res);
   }
 }
