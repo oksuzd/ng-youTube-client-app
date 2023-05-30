@@ -49,7 +49,7 @@ export class SearchResultPageComponent implements OnInit, OnDestroy {
     combineLatest([this.searchParamsService.searchParamsData$, this.searchResultService.searchResultData$])
       .pipe(
         tap((res) => { this.items = !res[1] ? [] : this.items}),
-        debounceTime(300),
+        debounceTime(1000),
         filter((res) => !!res[1]),
         switchMap(([params, query]) => {
           this.spinner.show().then();

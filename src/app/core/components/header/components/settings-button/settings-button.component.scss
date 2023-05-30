@@ -1,8 +1,12 @@
 @import "../../../../../../assets/styles/colors";
 
+:host {
+  display: contents;
+}
+
 .filter-settings-button {
   width: 24px;
   height: 24px;
   border-radius: 5px !important;
-  background: $main-blue;
+  background: $main-blue url("../../../../../../assets/img/filter-settings-icon.svg") no-repeat center center;
 }

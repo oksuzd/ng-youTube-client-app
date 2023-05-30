@@ -16,9 +16,11 @@
 
 <mat-form-field appearance="fill">
   <mat-label>Max Results</mat-label>
-  <mat-select [(value)]="searchParams.maxResults"
+  <mat-select class="max-results-value"
+              [(value)]="searchParams.maxResults"
               (valueChange)="onMaxResultsChange($event)">
-    <mat-option [value]="option.value"
+    <mat-option class="max-results-value"
+                [value]="option.value"
                 *ngFor="let option of dropOptions"
     >
       {{ option.viewValue }}

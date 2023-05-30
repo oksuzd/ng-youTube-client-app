@@ -10,10 +10,9 @@ import { Observable } from 'rxjs';
 export class LoginComponent implements OnInit {
   userName$: Observable<string> | undefined;
 
-  constructor(private userData: UserDataService) {
-  }
+  constructor(private userData: UserDataService) {}
 
   ngOnInit() {
-    this.userName$ = this.userData.userLogin$
+    this.userName$ = this.userData.userLogin$;
   }
 }

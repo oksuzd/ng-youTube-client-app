@@ -12,8 +12,10 @@
 }
 
 .login-button {
-  width: 22px;
-  height: 20px;
+  width: 23px;
+  height: 24px;
+  border: 1px solid $main-blue;
   border-radius: 5px !important;
-  background: #ffffff;
+  background: #fff url("../../../../../../assets/img/login-icon.svg") no-repeat center center;
 }
+

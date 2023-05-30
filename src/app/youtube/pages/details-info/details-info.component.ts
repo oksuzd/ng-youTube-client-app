@@ -22,11 +22,4 @@ export class DetailsInfoComponent implements OnInit {
     const itemId = this.route.snapshot.params['id'];
     this.item$ = this.detailsDataService.getDetailedData(itemId)
   }
-
-  getShortDescription(text: string): string {
-    if (text.length >= 700) {
-      return text.substring(0, 600) + '...';
-    }
-    return text;
-  }
 }

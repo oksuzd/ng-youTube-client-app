@@ -7,7 +7,6 @@ import { SearchInputComponent } from '@core/components/header/components/search-
 import { SettingsButtonComponent } from '@core/components/header/components/settings-button/settings-button.component';
 import { SharedModule } from '@shared/shared.module';
 import { FooterComponent } from './components/footer/footer.component';
-import { MainPageComponent } from './pages/main-page/main-page.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { RouterLink } from '@angular/router';
 import { ErrorInterceptor } from "@core/interceptors/error.interceptor";
@@ -21,7 +20,6 @@ import { HTTP_INTERCEPTORS } from "@angular/common/http";
     SearchInputComponent,
     SettingsButtonComponent,
     FooterComponent,
-    MainPageComponent,
     NotFoundComponent,
   ],
   imports: [

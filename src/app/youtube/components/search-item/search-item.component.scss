@@ -1,13 +1,26 @@
 @import "../../../../assets/styles/colors";
 
 .search-result-card {
+  width: 230px;
   max-width: 230px;
+  height: 274px;
   background: $main-light-grey;
   border-radius: 5px;
 }
 
+.search-card-header {
+  //outline: 2px solid blue;
+  width: 230px;
+  height: 125px;
+  padding-top: 16px;
+  text-align: center;
+}
+
 .search-card-img {
+  //outline: 2px solid red;
   max-width: 100%;
+  max-height: 100%;
+  //max-width: 100%;
   background-color: #c4c4c4;
 }
 
@@ -30,6 +43,7 @@
   line-height: 20px;
   text-align: right;
   color: #4f4f4f;
+  word-wrap: break-word;
 }
 
 .search-card-more-button {
@@ -44,7 +58,6 @@
 }
 
 .search-card-bar {
-  //background-color: $main-blue;
   height: 7px;
   border-radius: 0 0 5px 5px;
 }

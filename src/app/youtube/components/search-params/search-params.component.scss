@@ -1,11 +1,9 @@
 @import "src/assets/styles/colors";
 
 :host {
-  //border: 2px solid red;
   display: flex;
   justify-content: center;
   align-items: center;
-  //background: $main-light-grey;
   gap: 20px;
 }
 
@@ -26,4 +24,18 @@
 
 .mat-mdc-radio-button ~ .mat-mdc-radio-button {
   margin-left: 10px;
+}
+
+.mat-mdc-radio-button {
+  font-size: 10px !important;
+}
+
+::ng-deep {
+  .mat-mdc-radio-button .mdc-form-field label {
+    font-size: 12px;
+  }
+}
+
+.max-results-value {
+  font-size: 12px;
 }

@@ -1,52 +1,25 @@
 @import "../../../../assets/styles/colors";
 
 :host {
-  //padding: 15px 0;
-  //padding: 0 !important;
-  //border: 2px solid red;
   margin: auto;
   position: relative;
 
   app-back-button {
     position: absolute;
-    top: 14px;
-    left: -38px;
+    top: -1px;
+    left: -51px;
   }
+}
+
+.container {
+  width: 780px;
+  height: 367px;
 }
 
 .detail-card {
-  //border: 2px solid blueviolet;
   display: flex;
-  //flex-direction: row;
-}
-
-.detail-card-info {
-  //border: 2px solid green;
-  width: 300px;
-  display: flex;
-  flex-direction: column;
   background: $main-light-grey;
-  border-radius: 5px;
 
-  mat-card-header {
-    flex: 0 0 50px;
-  }
-
-  mat-card-content {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-  }
-
-  mat-card-footer {
-    flex: 0 0 30px;
-  }
-}
-
-.detail-card-content {
-  padding: 0 !important;
-  display: flex;
-  //flex-direction: row;
 }
 
 .detail-card-img {
@@ -54,11 +27,42 @@
   background-color: #c4c4c4;
 }
 
+.detail-card-image-link {
+  display: flex;
+}
+
+.detail-card-info {
+  width: 300px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+}
+
+.detail-card-content {
+  padding: 0 !important;
+  display: flex;
+}
+
 .detail-card-title {
+  height: 109px;
+}
+
+.detail-card-title-text {
+  height: 55px;
   font-weight: 700;
   font-size: 18px;
   line-height: 18px;
-  color: #000000;
+  color: #000;
+  word-wrap: break-word;
+  overflow: hidden;
+
+}
+
+.detail-card-channel {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .detail-card-date {
@@ -71,25 +75,23 @@
   color: $grey-text;
 }
 
-.detail-card-description-title {
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 16px;
-  color: #000000;
-}
-
 .detail-card-description-text {
-  margin-top: 5px;
-  margin-bottom: 5px;
+  height: 196px;
+  margin-bottom: 10px;
   font-weight: 400;
   font-size: 12px;
   line-height: 14px;
   color: $grey-text;
+  word-wrap: break-word;
+  overflow: hidden;
 }
 
 .detail-card-feedback {
   display: flex;
+  justify-content: center;
   gap: 10px;
+  min-height: auto;
+  padding: 0;
 }
 
 .detail-card-feedback-group {
@@ -104,7 +106,7 @@
   color: #000000;
 }
 
-.search-card-bar {
+.detail-card-bar {
   height: 7px;
   border-radius: 0 0 5px 5px;
 }

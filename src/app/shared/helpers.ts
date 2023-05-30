@@ -18,4 +18,11 @@ export namespace Helper {
       return BarColor.Default;
     }
   }
+
+  export function getShortText(text: string, maxLength: number): string {
+    if (text.length >= maxLength) {
+      return text.substring(0, maxLength) + '...';
+    }
+    return text;
+  }
 }

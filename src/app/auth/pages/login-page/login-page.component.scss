@@ -16,15 +16,17 @@
 }
 
 .login-form-label {
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .log-buttons-group {
-  margin: auto;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
 }
 
 .login-form-button {
-  width: 100px;
+  width: 80px;
   height: 30px;
   background-color: #2f80ed;
   color: #ffffff;

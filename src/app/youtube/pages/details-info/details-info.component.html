@@ -3,18 +3,19 @@
   <mat-card *ngIf="item$ | async as item" class="detail-card">
     <mat-card-content class="detail-card-content">
       <div class="detail-card-image">
-        <a href="https://www.youtube.com/watch?v={{item.id}}" target="_blank">
+        <a class="detail-card-image-link" href="https://www.youtube.com/watch?v={{ item.id }}" target="_blank">
           <img mat-card-image class="detail-card-img" [src]="item.imgUrl" alt="Card image"/>
         </a>
       </div>
       <div class="detail-card-info">
-        <mat-card-title class="detail-card-title">{{item.title}}</mat-card-title>
-        <div class="detail-card-channel">{{item.channelTitle}}</div>
-        <div class="detail-card-date">
-          {{ item.publishedAt | date : "fullDate" }}
+        <div class="detail-card-title">
+          <div class="detail-card-title-text">{{ item.title }}</div>
+          <div class="detail-card-channel">{{ item.channelTitle }}</div>
+          <div class="detail-card-date">
+            {{ item.publishedAt | date : "fullDate" }}
+          </div>
         </div>
-        <div class="detail-card-description-title">Description:</div>
-        <div class="detail-card-description-text">{{ getShortDescription(item.description!) }}</div>
+        <div class="detail-card-description-text">{{ item.description }}</div>
         <mat-card-actions class="detail-card-feedback">
           <div class="detail-card-feedback-group">
             <img
@@ -37,12 +38,12 @@
         </mat-card-actions>
       </div>
     </mat-card-content>
-    <mat-card-footer class="search-card-footer">
+    <mat-card-footer class="detail-card-footer">
       <mat-progress-bar
         appFooterBarColor
         [barColor]="item.dataBar"
         mode="determinate"
-        class="search-card-bar"
+        class="detail-card-bar"
       ></mat-progress-bar>
     </mat-card-footer>
   </mat-card>

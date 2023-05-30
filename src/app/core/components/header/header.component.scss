@@ -1,7 +1,6 @@
 @import "../../../../assets/styles/colors";
 
 :host {
-  //border: 2px solid green;
   flex: 0 0 50px;
   background: $main-light-grey;
   display: flex;
@@ -10,7 +9,6 @@
 }
 
 .header {
-  //border: 2px solid #ff00cc;
   display: flex;
   flex-direction: row;
   justify-content: center;
