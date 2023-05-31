@@ -9,21 +9,15 @@ export interface SearchResponse {
 }
 
 export interface SearchResponseItem {
-  kind:    ItemKind;
+  kind:    string;
   etag:    string;
   id:      ID;
   snippet: SearchSnippet;
 }
 
 export interface ID {
-  kind:    IDKind;
+  kind:    string;
   videoId: string;
-}
-
-enum IDKind {
-}
-
-enum ItemKind {
 }
 
 interface SearchSnippet {

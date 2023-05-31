@@ -1,8 +1,10 @@
 export interface RenderedItem {
   id: string;
+  kind: string;
   imgUrl?: string;
   title: string;
   channelTitle: string;
+  channelId: string;
   publishedAt: string | Date;
   description?: string | null;
   dataBar?: BarColor;

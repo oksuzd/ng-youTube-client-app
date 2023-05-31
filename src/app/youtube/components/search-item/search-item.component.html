@@ -6,7 +6,11 @@
     <mat-card-title class="search-card-title">{{ getShortTitle(item.title) }}</mat-card-title>
   </mat-card-content>
   <mat-card-footer class="search-card-footer">
-    <button class="search-card-more-button" mat-raised-button (click)="openDetails(item.id)">more...
+    <a *ngIf="item.kind === 'youtube#video'" class="search-card-more-button"
+       mat-button routerLink='/youtube/detail/{{item.id}}'>more...
+    </a>
+    <button *ngIf="item.kind === 'youtube#channel'"
+            class="search-card-more-button" mat-raised-button (click)="goToChannel(item.channelId)">more...
     </button>
     <mat-progress-bar
       appFooterBarColor

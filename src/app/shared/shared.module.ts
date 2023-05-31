@@ -11,6 +11,8 @@ import { BackButtonComponent } from './components/back-button/back-button.compon
 import { MatRadioModule } from "@angular/material/radio";
 import { MatSelectModule } from "@angular/material/select";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
+import { DialogWindowComponent } from './components/dialog-window/dialog-window.component';
+import { MatDialogModule } from "@angular/material/dialog";
 
 const materialModules = [
   MatInputModule,
@@ -21,10 +23,11 @@ const materialModules = [
   MatRadioModule,
   MatSelectModule,
   MatSnackBarModule,
+  MatDialogModule,
 ];
 
 @NgModule({
-  declarations: [BackButtonComponent],
+  declarations: [BackButtonComponent, DialogWindowComponent],
   imports: [CommonModule, ...materialModules, FormsModule],
   exports: [...materialModules, FormsModule, BackButtonComponent],
 })

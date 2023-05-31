@@ -28,7 +28,6 @@ export class SearchResultDataService {
   }
 
   setSearchTermData(data: string) {
-    console.log('setSearchTermData', data)
     this._searchResultData$.next(data);
   }
 
@@ -61,9 +60,8 @@ export class SearchResultDataService {
       .pipe(
         map((res) => this.mapData(res)),
         catchError(err => {
-          // this.snackBar.open('Error getting list of videos', ' X ', )
           if (err.status === 404) {
-            this.snackBar.open('Video list not found', ' X ', )
+            this.snackBar.open('Video list not found', ' X ',)
           }
           return throwError(err)
         })
@@ -71,20 +69,23 @@ export class SearchResultDataService {
   }
 
   private mapData(data: SearchResponse): RenderedItem[] {
-    return data.items.map((item) => {
-      return {
-        id: item.id.videoId,
-        imgUrl: item.snippet.thumbnails.medium.url,
-        title: item.snippet.title,
-        channelTitle: item.snippet.channelTitle,
-        publishedAt: item.snippet.publishedAt,
-        dataBar: Helper.getSearchResultDataBarColor(item.snippet.publishedAt),
-      }
-    })
+    return data.items
+      .map((item) => {
+        return {
+          id: item.id.videoId,
+          kind: item.id.kind,
+          imgUrl: item.snippet.thumbnails.medium.url,
+          title: item.snippet.title,
+          channelTitle: item.snippet.channelTitle,
+          channelId: item.snippet.channelId,
+          publishedAt: item.snippet.publishedAt,
+          dataBar: Helper.getSearchResultDataBarColor(item.snippet.publishedAt),
+        }
+      })
+
   }
 
   showFilter(flag: boolean) {
     this._searchParamsIsShown$.next(flag);
   }
-
 }
