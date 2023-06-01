@@ -2,7 +2,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { RenderedItem } from "@youtube/models";
 import { DataStoreService } from "@youtube/services";
 import { Helper } from "@shared/helpers";
-// import { DOCUMENT } from "@angular/common";
 import { MatDialog } from "@angular/material/dialog";
 import { DialogWindowComponent } from "@shared/components/dialog-window/dialog-window.component";
 
@@ -15,7 +14,6 @@ export class SearchItemComponent implements OnInit {
   @Input() public item!: RenderedItem;
 
   constructor(
-    // @Inject(DOCUMENT) private document: Document,
     private stateService: DataStoreService,
     public dialog: MatDialog,
   ) {}
@@ -25,7 +23,7 @@ export class SearchItemComponent implements OnInit {
   }
 
   getShortTitle(text: string): string {
-    return Helper.getShortText(text, 60);
+    return Helper.getShortText(text, 50);
   }
 
   goToChannel(id: string): void {

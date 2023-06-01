@@ -1,9 +1,7 @@
+@import "../../../../assets/styles/colors";
+
 :host {
   margin: auto;
-}
-
-.not-found-icon {
-  margin-right: 15px;
 }
 
 .not-found-message {
@@ -12,4 +10,17 @@
   font-size: 24px;
   line-height: 28px;
   color: #828282;
+}
+
+.container {
+  gap: 10px;
+}
+
+.home-button {
+  width: 80px;
+  height: 50px;
+  border-radius: 5px 0 0 5px;
+  background-color: $main-blue !important;
+  color: #fff !important;
+  font-size: 18px;
 }

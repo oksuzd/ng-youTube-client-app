@@ -14,12 +14,17 @@
   height: 24px;
   border: none;
   background: #efefef;
+
+  &:focus-visible {
+    outline: none;
+  }
 }
+
 
 .search-button {
   background-color: $main-blue !important;
   width: 80px;
   height: 24px;
-  color: #ffffff !important;
+  color: #fff !important;
   border-radius: 0 4px 4px 0;
 }

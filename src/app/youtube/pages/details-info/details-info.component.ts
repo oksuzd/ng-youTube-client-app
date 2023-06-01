@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DetailedItem } from "@youtube/models";
 import { DetailedItemDataService } from "@youtube/services/detailed-item-data.service";
 import { Observable } from "rxjs";
@@ -10,16 +10,17 @@ import { Observable } from "rxjs";
   styleUrls: ['./details-info.component.scss'],
 })
 export class DetailsInfoComponent implements OnInit {
-  item$: Observable<DetailedItem> | undefined;
+  item$: Observable<DetailedItem | null> | undefined ;
 
   constructor(
     public route: ActivatedRoute,
+    private router: Router,
     private detailsDataService: DetailedItemDataService
   ) {
   }
 
   ngOnInit() {
     const itemId = this.route.snapshot.params['id'];
-    this.item$ = this.detailsDataService.getDetailedData(itemId)
+    this.item$ = this.detailsDataService.getDetailedData(itemId);
   }
 }
