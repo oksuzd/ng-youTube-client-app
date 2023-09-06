@@ -16,10 +16,10 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'ng-youTube-client-app'`, () => {
+  it(`should have as title 'ng-youtube-client-app'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('ng-youTube-client-app');
+    expect(app.title).toEqual('ng-youtube-client-app');
   });
 
   it('should render title', () => {
@@ -27,7 +27,7 @@ describe('AppComponent', () => {
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('.content span')?.textContent).toContain(
-      'ng-youTube-client-app app is running!'
+      'ng-youtube-client-app app is running!'
     );
   });
 });

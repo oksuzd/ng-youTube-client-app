@@ -7,7 +7,7 @@ import { UserDataService } from '@shared/services/user-data.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  title = 'ng-youTube-client-app';
+  title = 'ng-youtube-client-app';
 
   constructor(private userData: UserDataService) {}
 
