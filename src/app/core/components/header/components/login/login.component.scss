@@ -1,5 +1,8 @@
 @import "../../../../../../assets/styles/colors";
 
+.host {
+}
+
 .login {
   display: flex;
   justify-content: center;
@@ -18,4 +21,3 @@
   border-radius: 5px !important;
   background: #fff url("../../../../../../assets/img/login-icon.svg") no-repeat center center;
 }
-

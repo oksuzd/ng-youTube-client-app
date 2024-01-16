@@ -12,10 +12,6 @@ export class SearchInputComponent {
   constructor(private searchResultService: SearchResultDataService) {
   }
 
-  buttonSearch(): void {
-    this.searchResultService.setSearchTermData(this.inputValue);
-  }
-
   liveSearch(event: string): void {
     if (event.length >= 3 || !event) {
       this.searchResultService.setSearchTermData(event);

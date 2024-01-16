@@ -1,4 +1,4 @@
 <div class="login">
-  <div class="user-name">{{ (userName$ | async) ?? 'Your Name' }}</div>
-  <button mat-mini-fab routerLink="auth/login" class="login-button"></button>
+  <div class="user-name">{{ userName$ | async}}</div>
+<button mat-mini-fab routerLink="auth/login" class="login-button"></button>
 </div>

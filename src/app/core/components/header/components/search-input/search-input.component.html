@@ -3,12 +3,8 @@
     name="inputValue"
     class="search-input"
     type="text"
-    placeholder="What do you want to find out?"
+    placeholder="What do you want to find?"
     [(ngModel)]="inputValue"
     (ngModelChange)="liveSearch($event)"
   />
-  <button
-    class="search-button" matSuffix mat-raised-button routerLink="youtube/search-result"
-    (click)="buttonSearch()">search
-  </button>
 </form>

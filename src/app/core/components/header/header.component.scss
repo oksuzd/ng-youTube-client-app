@@ -1,7 +1,7 @@
 @import "../../../../assets/styles/colors";
 
 :host {
-  flex: 0 0 50px;
+  flex: 0 0 60px;
   background: $main-light-grey;
   display: flex;
   justify-content: center;
@@ -24,6 +24,8 @@
   }
 
   &__right {
+    display: flex;
+    justify-content: end;
     width: 15%;
   }
 }
