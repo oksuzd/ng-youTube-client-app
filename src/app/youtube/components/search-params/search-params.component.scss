@@ -34,6 +34,14 @@
   .mat-mdc-radio-button .mdc-form-field label {
     font-size: 12px;
   }
+
+  .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+    background-color: #fff;
+  }
+}
+
+.max-results-form {
+  width: 124px;
 }
 
 .max-results-value {
