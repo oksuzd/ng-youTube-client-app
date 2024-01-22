@@ -5,45 +5,41 @@
   justify-content: center;
   align-items: center;
   gap: 20px;
-}
 
-.filter-title {
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 14px;
-  color: #929292;
-}
+  .filter-title {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    color: #929292;
+  }
 
-.sorting-button {
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 14px;
-  text-decoration-line: underline;
-  color: $main-blue !important;
-}
+  .sorting-button {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    text-decoration-line: underline;
+    color: $main-blue;
+  }
 
-.mat-mdc-radio-button ~ .mat-mdc-radio-button {
-  margin-left: 10px;
-}
+  .mat-mdc-radio-button ~ .mat-mdc-radio-button {
+    margin-left: 10px;
+  }
 
-.mat-mdc-radio-button {
-  font-size: 10px !important;
-}
+  .mat-mdc-radio-button {
+    font-size: 10px;
+  }
 
-::ng-deep {
-  .mat-mdc-radio-button .mdc-form-field label {
+  ::ng-deep {
+    .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+      background-color: #fff;
+    }
+  }
+
+  .max-results-form {
+    width: 124px;
+  }
+
+  .max-results-value {
     font-size: 12px;
   }
-
-  .mdc-text-field--filled:not(.mdc-text-field--disabled) {
-    background-color: #fff;
-  }
-}
-
-.max-results-form {
-  width: 124px;
-}
-
-.max-results-value {
-  font-size: 12px;
 }

@@ -20,7 +20,7 @@ export class ErrorInterceptor implements HttpInterceptor {
         if (err.status != 404) {
           this.snackBar.open('Connection Error', ' X ', )
         }
-        return throwError(err)
+        return throwError(() => err);
       })
     );
   }

@@ -24,7 +24,7 @@ export interface DetailedItem {
 }
 
 export enum BarColor {
-  Blue = '#2F80ED',
+  Blue = '#3F51B5',
   Red = 'Red',
   Yellow = 'Yellow',
   Green = 'Green',

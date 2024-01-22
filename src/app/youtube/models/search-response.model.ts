@@ -1,4 +1,4 @@
-/* Search Results List Response */
+/** Search Results List Response */
 export interface SearchResponse {
   kind:          string;
   etag:          string;
@@ -52,7 +52,7 @@ interface PageInfo {
   resultsPerPage: number;
 }
 
-/* Detailed Video Response */
+/** Detailed Video Response */
 export interface DetailsResponse {
   kind:     string;
   etag:     string;

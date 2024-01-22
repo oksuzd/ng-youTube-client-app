@@ -6,13 +6,10 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class UserDataService {
   private readonly authKey: string = 'isAuthorised';
 
-  private _userLogin$: BehaviorSubject<string> = new BehaviorSubject<string>(
-    ''
-  );
+  private _userLogin$: BehaviorSubject<string> = new BehaviorSubject<string>('');
   readonly userLogin$: Observable<string> = this._userLogin$.asObservable();
 
-  constructor() {
-  }
+  constructor() {}
 
   saveData(user: User): void {
     if (user?.login && user?.password) {

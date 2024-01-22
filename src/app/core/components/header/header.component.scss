@@ -6,26 +6,26 @@
   display: flex;
   justify-content: center;
   align-items: center;
-}
 
-.header {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-
-  &__left {
-    width: 15%;
-  }
-
-  &__center {
-    width: 70%;
-  }
-
-  &__right {
+  .header {
     display: flex;
-    justify-content: end;
-    width: 15%;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    &__left {
+      width: 15%;
+    }
+
+    &__center {
+      width: 70%;
+    }
+
+    &__right {
+      display: flex;
+      justify-content: end;
+      width: 15%;
+    }
   }
 }

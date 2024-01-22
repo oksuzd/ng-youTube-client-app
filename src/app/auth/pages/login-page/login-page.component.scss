@@ -1,32 +1,34 @@
+@import "../../../../assets/styles/colors";
+
 :host {
   margin: 45px auto;
-}
 
-.login-card-title {
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 21px;
-}
+  .login-card-title {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 21px;
+  }
 
-.login-form {
-  display: flex;
-  flex-direction: column;
-}
+  .login-form {
+    display: flex;
+    flex-direction: column;
+  }
 
-.login-form-label {
-  font-size: 14px;
-}
+  .login-form-label {
+    font-size: 14px;
+  }
 
-.log-buttons-group {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-}
+  .log-buttons-group {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
 
-.login-form-button {
-  width: 80px;
-  height: 30px;
-  background-color: #2f80ed;
-  color: #ffffff;
-  font-size: 14px;
+  .login-form-button {
+    width: 80px;
+    height: 30px;
+    background-color: $main-blue;
+    color: #fff;
+    font-size: 14px;
+  }
 }

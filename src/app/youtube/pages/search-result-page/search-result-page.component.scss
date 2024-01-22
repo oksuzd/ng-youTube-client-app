@@ -2,9 +2,11 @@
 
 :host {
   margin: 0 auto;
+
+  .search-result-cards {
+    padding: 15px 0;
+    gap: 15px;
+  }
 }
 
-.search-result-cards {
-  padding: 15px 0;
-  gap: 15px;
-}
+

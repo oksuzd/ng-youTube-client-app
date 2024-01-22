@@ -1,58 +1,60 @@
 @import "../../../../assets/styles/colors";
 
-.search-result-card {
-  width: 230px;
-  max-width: 230px;
-  height: 274px;
-  background: $main-light-grey;
-  border-radius: 5px;
-}
+:host {
+  .search-result-card {
+    width: 230px;
+    max-width: 230px;
+    height: 274px;
+    background: $main-light-grey;
+    border-radius: 5px;
+  }
 
-.search-card-header {
-  width: 230px;
-  height: 125px;
-  padding-top: 16px;
-  text-align: center;
-}
+  .search-card-header {
+    width: 230px;
+    height: 125px;
+    padding-top: 16px;
+    text-align: center;
+  }
 
-.search-card-img {
-  max-width: 100%;
-  max-height: 100%;
-  background-color: #c4c4c4;
-}
+  .search-card-img {
+    max-width: 100%;
+    max-height: 100%;
+    background-color: #c4c4c4;
+  }
 
-.search-card-content {
-  min-height: 100px;
-}
+  .search-card-content {
+    min-height: 100px;
+  }
 
-.search-card-feedback {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-}
+  .search-card-feedback {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
 
-.search-card-title {
-  margin: 16px 0;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 18px;
-  line-height: 20px;
-  text-align: right;
-  color: #4f4f4f;
-  word-wrap: break-word;
-}
+  .search-card-title {
+    margin: 16px 0;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 20px;
+    text-align: right;
+    color: #4f4f4f;
+    word-wrap: break-word;
+  }
 
-.search-card-more-button {
-  display: flex;
-  margin: 0 auto 10px;
-  width: 120px;
-  height: 32px;
-  background-color: $main-blue;
-  color: $white-text;
-}
+  .search-card-more-button {
+    display: flex;
+    margin: 0 auto 10px;
+    width: 120px;
+    height: 32px;
+    background-color: $main-blue;
+    color: $white-text;
+  }
 
-.search-card-bar {
-  height: 7px;
-  border-radius: 0 0 5px 5px;
+  .search-card-bar {
+    height: 7px;
+    border-radius: 0 0 5px 5px;
+  }
 }

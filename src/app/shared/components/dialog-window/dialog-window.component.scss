@@ -1,9 +1,9 @@
-@import "../../../../assets/styles/colors";
+:host {
+  h1 {
+    text-align: center;
+  }
 
-h1 {
-  text-align: center;
-}
-
-.dialog-buttons-group {
-  justify-content: center;
+  .dialog-buttons-group {
+    justify-content: center;
+  }
 }

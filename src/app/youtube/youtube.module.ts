@@ -29,9 +29,6 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     NgxSpinnerModule
   ],
-  exports: [
-    SearchItemComponent,
-  ],
 })
 export class YoutubeModule {
 }
