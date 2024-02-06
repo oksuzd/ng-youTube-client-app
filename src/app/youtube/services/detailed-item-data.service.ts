@@ -17,8 +17,7 @@ export class DetailedItemDataService {
     private http: HttpClient,
     private snackBar: MatSnackBar,
     private router: Router
-  ) {
-  }
+  ) {}
 
   getDetailedData(id: string): Observable<DetailedItem | null> {
     let url = 'https://youtube.googleapis.com/youtube/v3/videos?part=snippet&part=statistics&' +
@@ -35,11 +34,11 @@ export class DetailedItemDataService {
         map((res) => this.mapData(res)),
         catchError(err => {
           if (err.status === 404) {
-            this.snackBar.open('Video not found', ' X ',)
+            this.snackBar.open('Video not found', ' X ',);
           }
-          return throwError(err)
+          return throwError(() => err);
         })
-      )
+      );
   }
 
 
@@ -58,7 +57,7 @@ export class DetailedItemDataService {
         likes: +item.statistics.likeCount,
         comments: +item.statistics.commentCount,
         dataBar: Helper.getSearchResultDataBarColor(item.snippet.publishedAt),
-      }
+      };
     }
     return null;
   }

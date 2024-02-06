@@ -4,7 +4,6 @@ import { OrderParam, SearchParams } from "@youtube/models";
 import { MatRadioChange } from "@angular/material/radio";
 import { Subject, takeUntil } from "rxjs";
 
-
 interface DropOptions {
   value: string;
   viewValue: string;
@@ -30,8 +29,7 @@ export class SearchParamsComponent implements OnInit, OnDestroy {
   };
   notifier$: Subject<null> = new Subject();
 
-  constructor(private searchParamsData: SearchResultDataService) {
-  }
+  constructor(private searchParamsData: SearchResultDataService) {}
 
   ngOnInit() {
     this.searchParamsData.searchParamsData$

@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { SharedModule } from '@shared/shared.module';
 import { SearchItemComponent } from '@youtube/components/search-item/search-item.component';
 import { FooterBarColorDirective } from '@youtube/directives/footer-bar-color.directive';
@@ -27,7 +27,8 @@ const routes: Routes = [
     CommonModule,
     SharedModule,
     RouterModule.forChild(routes),
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    NgOptimizedImage
   ],
 })
 export class YoutubeModule {

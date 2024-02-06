@@ -24,8 +24,7 @@ export class SearchResultDataService {
   private _searchParamsData$: BehaviorSubject<SearchParams> = new BehaviorSubject<SearchParams>(this.selectedSearchParams);
   readonly searchParamsData$: Observable<SearchParams> = this._searchParamsData$.asObservable();
 
-  constructor(private http: HttpClient, private snackBar: MatSnackBar) {
-  }
+  constructor(private http: HttpClient, private snackBar: MatSnackBar) {}
 
   setSearchTermData(data: string) {
     this._searchResultData$.next(data);
@@ -63,7 +62,7 @@ export class SearchResultDataService {
           if (err.status === 404) {
             this.snackBar.open('Video list not found', ' X ',)
           }
-          return throwError(err)
+          return throwError(() => err);
         })
       )
   }

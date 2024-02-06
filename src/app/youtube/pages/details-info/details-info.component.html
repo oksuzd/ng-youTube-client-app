@@ -4,7 +4,7 @@
     <mat-card-content class="detail-card-content">
       <div class="detail-card-image">
         <a class="detail-card-image-link" href="https://www.youtube.com/watch?v={{ item.id }}" target="_blank">
-          <img mat-card-image class="detail-card-img" [src]="item.imgUrl" alt="Card image"/>
+          <img mat-card-image class="detail-card-img" [src]="item.imgUrl" width="480" height="360" alt="Card image"/>
         </a>
       </div>
       <div class="detail-card-info">
@@ -19,19 +19,19 @@
         <mat-card-actions class="detail-card-feedback">
           <div class="detail-card-feedback-group">
             <img
-              src="../../../../assets/img/viewed-icon.svg"
-              alt="viewed-icon"
+              src="assets/img/viewed-icon.svg"
+              alt="viewed"
             />
             <span class="detail-card-feedback-text">{{ item.views }}</span>
           </div>
           <div class="detail-card-feedback-group">
-            <img src="../../../../assets/img/liked-icon.svg" alt="liked-icon"/>
+            <img src="assets/img/liked-icon.svg" alt="liked"/>
             <span class="detail-card-feedback-text">{{ item.likes }}</span>
           </div>
           <div class="detail-card-feedback-group">
             <img
-              src="../../../../assets/img/comments-icon.svg"
-              alt="comments-icon"
+              src="assets/img/comments-icon.svg"
+              alt="comments"
             />
             <span class="detail-card-feedback-text">{{ item.comments }}</span>
           </div>

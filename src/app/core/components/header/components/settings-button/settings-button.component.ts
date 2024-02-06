@@ -9,8 +9,7 @@ import { SearchResultDataService } from '@youtube/services';
 export class SettingsButtonComponent {
   isFilterShown: boolean = false;
 
-  constructor(private filterService: SearchResultDataService) {
-  }
+  constructor(private filterService: SearchResultDataService) {}
 
   show(): void {
     this.isFilterShown = !this.isFilterShown;

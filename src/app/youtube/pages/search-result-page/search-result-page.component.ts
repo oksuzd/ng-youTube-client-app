@@ -22,14 +22,12 @@ export class SearchResultPageComponent implements OnInit, OnDestroy {
   items: RenderedItem[] = [];
   notifier$: Subject<null> = new Subject();
 
-
   constructor(
     private spinner: NgxSpinnerService,
     private searchParamsBarService: SearchResultDataService,
     private searchParamsService: SearchResultDataService,
     private searchResultService: SearchResultDataService,
-  ) {
-  }
+  ) {}
 
   ngOnInit() {
     this.createSubscriptionOnSearchParamsBar();
@@ -55,9 +53,9 @@ export class SearchResultPageComponent implements OnInit, OnDestroy {
           this.spinner.show().then();
           return this.searchResultService.getSearchResultData(query, params.maxResults, params.order)
         }),
-        catchError((error) => {
+        catchError((err) => {
           this.spinner.hide().then();
-          return throwError(error);
+          return throwError(() => err);
         }),
         takeUntil(this.notifier$)
       )
